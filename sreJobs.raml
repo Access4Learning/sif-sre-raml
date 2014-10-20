@@ -1,0 +1,134 @@
+#%RAML 0.8
+---
+title: SIF Student Record Exchange
+version: v3.3
+mediaType:  application/xml
+protocols: [HTTP, HTTPS]
+baseUri: https://sif3service.dev/{version}/svcs/dev/requestProvider/sreJobs
+
+documentation:
+  - title: Overview
+    content: |
+      A Student Record Exchange (SRE) job tracks the status of moving a student's full student record from a SIF service provider. The process includes four basic phases:
+        1. Creating the job
+        2. Requesting permission to obtain the record
+        3. Fetching the record
+        4. Sending a receipt back to the responder
+
+/:
+  displayName: |
+    Phase 1: Job Object
+  description: Creating a new SRE Job begins the process of requesting a student's records, but does not immediately provide the records.
+  post:
+    description: Submit a new SRE job for processing.
+    body:
+      application/xml:
+        schema: !include schemas/sreJob.xsd
+    responses:
+      201:
+        description: Successfully created the job.
+        body:
+          application/xml:
+            schema: !include schemas/sreJob.xsd
+    
+  /{jobId}:
+    displayName: Job Details
+    get:
+      description: Get the details of a specific job, identified by {id}.
+      responses:
+        200:
+          body:
+            application/xml:
+              schema: !include schemas/sreJob.xsd
+  
+    delete:
+      description: Delete the job. This also deletes all child resources (permissionRequest, sre, receipt).
+      responses:
+        200:
+          description: Job was successfully deleted. #TODO confirm that 200 is the proper status code to return for a delete operation.
+      
+/{jobId}/permissionRequests:
+  displayName: |
+    Phase 2: Permission Request
+  description: Before a requester can access the `sre` object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the `sre` object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
+  get:
+    description: Retrieves the list of permission requests.
+    queryParameters:
+      isActive:
+        description: Only return the request which is the primary, active permissionRequest. If left blank, all records are returned.
+        type: boolean
+        required: false
+    responses:
+      200:
+        description: Success
+        body:
+          application/xml:
+            schema: !include schemas/srePermissionRequest.xsd
+
+  post:
+    description: Issues a new permission request. (Delayed response)
+    headers:
+      queueId:
+        description: The queue ID that can accept the delayed response. TODO move to SIF `queueable` trait.
+    body:
+      application/xml:
+        schema: !include schemas/srePermissionRequest.xsd
+    responses:
+      202:
+        description: Delayed response accepted - TODO figure out how to specify text response
+
+      600:
+        description: The delayed response from the queue
+        body:
+          application/xml:
+            schema: !include schemas/srePermissionRequest.xsd
+        
+  /{id}:
+    get:
+      description: Fetches the details about the specified permission request.
+      responses:
+        200:
+          description: Success
+          body:
+            application/xml:
+              schema: !include schemas/srePermissionRequest.xsd
+    
+
+/{jobId}/sre:
+  displayName: |
+    Phase 3: SRE Object
+  description: Once the consumer has proper permissions, this phase requests the actual student record object. The provider should check that the requestToken is valid before delivering the SRE object.
+  get:
+    description: Get the object
+    headers:
+      xQuery:
+        description: The values requested from the provider in the SRE object.
+        required: false
+        type: string
+      requestToken:
+        description: The requestToken that authorizes access to this student record. Could have been retrieved from the permissionRequest object or received from an out-of-band process.
+        required: false
+        type: string
+    responses:
+      200:
+        description: Returns the SRE object.
+        body:
+          application/xml:
+            schema: !include schemas/SIFNAsre.xsd
+
+/{jobId}/receipt:
+  displayName: |
+    Phase 4: Receipt
+  description: Notifies the provider of the status of the record request, with additional receipt codes that the provider may be able to act upon. For example, this object could report that a student has been sucessfully enrolled in a receiving school district.
+  post:
+    description: |
+      Post a new receipt object to the provider.
+    body:
+      text/xml:
+        schema: !include schemas/sreReceipt.xsd
+    responses:
+      201:
+        description: The receipt was delivered to the provider.
+        body:
+          application/xml:
+            schema: !include schemas/sreReceipt.xsd

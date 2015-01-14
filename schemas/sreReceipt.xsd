@@ -1,4 +1,4 @@
-<!-- version 3.03.01 -->
+<!-- version 3.03.02 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 	<xs:include schemaLocation="../Entity/SIFglobal.xsd"/>
 	<xs:complexType name="sreReceiptType">
@@ -28,34 +28,6 @@
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="receiverEmailAddress" type="gEmailType" minOccurs="1">
-						<xs:annotation>
-							<xs:appinfo>
-								<elementName>Receiver Email Address</elementName>
-								<sifChar>M</sifChar>
-								<cedsId/>
-								<cedsURL/>
-							</xs:appinfo>
-							<xs:documentation>
-								Valid e-mail address for the individual requesting the record that can be used to correspond out-of-band regarding this student record transfer if needed.
-							</xs:documentation>
-						</xs:annotation>
-					</xs:element>
-					<xs:element name="receiverOrganizationName" type="xs:token" minOccurs="1">
-						<xs:annotation>
-							<xs:appinfo>
-								<elementName>Receiver Organization Name</elementName>
-								<sifChar>M</sifChar>
-								<cedsId>000204</cedsId>
-								<cedsURL>
-									https://ceds.ed.gov/CEDSElementDetails.aspx?TermxTopicId=22713
-								</cedsURL>
-							</xs:appinfo>
-							<xs:documentation>
-								The name of a non-person entity such as an organization, institution, agency or business requesting the records.
-							</xs:documentation>
-						</xs:annotation>
-					</xs:element>
 					<xs:element name="receiverNCESSchoolCode" type="xs:token" minOccurs="0">
 						<xs:annotation>
 							<xs:appinfo>
@@ -67,7 +39,7 @@
 								</cedsURL>
 							</xs:appinfo>
 							<xs:documentation>
-								A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.
+								The NCES Code is a unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity. In this context, this code represents the school that the student is being enrolled into, if this SRE Job is used to describe a student enrollment transfer.
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
@@ -82,7 +54,7 @@
 								</cedsURL>
 							</xs:appinfo>
 							<xs:documentation>
-								A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.
+									The NCES Code is a unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity. In this context, this code represents the LEA that the student is being enrolled into, if this SRE Job is used to describe a student enrollment transfer.
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>

@@ -1,4 +1,4 @@
-<!-- version 3.03.01 -->
+<!-- version 3.03.02 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 	<xs:include schemaLocation="../Entity/SIFglobal.xsd"/>
 	<xs:complexType name="sreJobType">
@@ -37,18 +37,42 @@
 								<cedsURL/>
 							</xs:appinfo>
 							<xs:documentation>
-								The valid e-mail address of the entity making the request.
+								A valid e-mail address at the organization making the request.
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="requesterOrgRefId" type="gRefIdType" minOccurs="1">
+					<xs:element name="requesterOrganizationRefId" type="gGenericRefIdPointerType" minOccurs="1">
 						<xs:annotation>
 							<xs:appinfo>
 								<elementName>Requester Organization RefId</elementName>
 								<sifChar>M</sifChar>
 							</xs:appinfo>
 							<xs:documentation>
-								The refId of the organization (LEA, school, state, etc.) responsible for the request that is resolvable by the provider.
+								The refId of the organization (LEA, School or SEA) responsible for the request that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="providerEmailAddress" type="gEmailType" minOccurs="0">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Provider Email Address</elementName>
+								<sifChar>O</sifChar>
+								<cedsId/>
+								<cedsURL/>
+							</xs:appinfo>
+							<xs:documentation>
+								A valid e-mail address at the organization providing the records.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="providerOrganizationRefId" type="gGenericRefIdPointerType" minOccurs="1">
+						<xs:annotation>
+							<xs:appinfo>
+								<elementName>Provider Organization RefId</elementName>
+								<sifChar>M</sifChar>
+							</xs:appinfo>
+							<xs:documentation>
+								The refId of the organization (LEA, School or SEA) responsible for providing the student records, that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>

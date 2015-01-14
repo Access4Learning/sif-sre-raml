@@ -1,4 +1,4 @@
-<!-- version 3.03.01 -->
+<!-- version 3.03.02 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 	<xs:include schemaLocation="../Entity/SIFglobal.xsd"/>
 	<xs:complexType name="srePermissionRequestType">
@@ -10,6 +10,8 @@
 			</xs:appinfo>
 			<xs:documentation>
 				Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
+				
+				#TODO Need to add status to this object.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>

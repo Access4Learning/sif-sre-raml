@@ -233,7 +233,7 @@
                                             <p>
                                                 <small>
                                                     <strong>Schema</strong>:
-                                                    <pre>&lt;!-- version 3.03.01 --&gt;
+                                                    <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;sreJobType&quot;&gt;
@@ -272,18 +272,42 @@
 								&lt;cedsURL/&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								The valid e-mail address of the entity making the request.
+								A valid e-mail address at the organization making the request.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
-					&lt;xs:element name=&quot;requesterOrgRefId&quot; type=&quot;gRefIdType&quot; minOccurs=&quot;1&quot;&gt;
+					&lt;xs:element name=&quot;requesterOrganizationRefId&quot; type=&quot;gGenericRefIdPointerType&quot; minOccurs=&quot;1&quot;&gt;
 						&lt;xs:annotation&gt;
 							&lt;xs:appinfo&gt;
 								&lt;elementName&gt;Requester Organization RefId&lt;/elementName&gt;
 								&lt;sifChar&gt;M&lt;/sifChar&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								The refId of the organization (LEA, school, state, etc.) responsible for the request that is resolvable by the provider.
+								The refId of the organization (LEA, School or SEA) responsible for the request that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
+							&lt;/xs:documentation&gt;
+						&lt;/xs:annotation&gt;
+					&lt;/xs:element&gt;
+					&lt;xs:element name=&quot;providerEmailAddress&quot; type=&quot;gEmailType&quot; minOccurs=&quot;0&quot;&gt;
+						&lt;xs:annotation&gt;
+							&lt;xs:appinfo&gt;
+								&lt;elementName&gt;Provider Email Address&lt;/elementName&gt;
+								&lt;sifChar&gt;O&lt;/sifChar&gt;
+								&lt;cedsId/&gt;
+								&lt;cedsURL/&gt;
+							&lt;/xs:appinfo&gt;
+							&lt;xs:documentation&gt;
+								A valid e-mail address at the organization providing the records.
+							&lt;/xs:documentation&gt;
+						&lt;/xs:annotation&gt;
+					&lt;/xs:element&gt;
+					&lt;xs:element name=&quot;providerOrganizationRefId&quot; type=&quot;gGenericRefIdPointerType&quot; minOccurs=&quot;1&quot;&gt;
+						&lt;xs:annotation&gt;
+							&lt;xs:appinfo&gt;
+								&lt;elementName&gt;Provider Organization RefId&lt;/elementName&gt;
+								&lt;sifChar&gt;M&lt;/sifChar&gt;
+							&lt;/xs:appinfo&gt;
+							&lt;xs:documentation&gt;
+								The refId of the organization (LEA, School or SEA) responsible for providing the student records, that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
@@ -347,7 +371,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Schema</strong>:
-                                                            <pre>&lt;!-- version 3.03.01 --&gt;
+                                                            <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;sreJobType&quot;&gt;
@@ -386,18 +410,42 @@
 								&lt;cedsURL/&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								The valid e-mail address of the entity making the request.
+								A valid e-mail address at the organization making the request.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
-					&lt;xs:element name=&quot;requesterOrgRefId&quot; type=&quot;gRefIdType&quot; minOccurs=&quot;1&quot;&gt;
+					&lt;xs:element name=&quot;requesterOrganizationRefId&quot; type=&quot;gGenericRefIdPointerType&quot; minOccurs=&quot;1&quot;&gt;
 						&lt;xs:annotation&gt;
 							&lt;xs:appinfo&gt;
 								&lt;elementName&gt;Requester Organization RefId&lt;/elementName&gt;
 								&lt;sifChar&gt;M&lt;/sifChar&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								The refId of the organization (LEA, school, state, etc.) responsible for the request that is resolvable by the provider.
+								The refId of the organization (LEA, School or SEA) responsible for the request that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
+							&lt;/xs:documentation&gt;
+						&lt;/xs:annotation&gt;
+					&lt;/xs:element&gt;
+					&lt;xs:element name=&quot;providerEmailAddress&quot; type=&quot;gEmailType&quot; minOccurs=&quot;0&quot;&gt;
+						&lt;xs:annotation&gt;
+							&lt;xs:appinfo&gt;
+								&lt;elementName&gt;Provider Email Address&lt;/elementName&gt;
+								&lt;sifChar&gt;O&lt;/sifChar&gt;
+								&lt;cedsId/&gt;
+								&lt;cedsURL/&gt;
+							&lt;/xs:appinfo&gt;
+							&lt;xs:documentation&gt;
+								A valid e-mail address at the organization providing the records.
+							&lt;/xs:documentation&gt;
+						&lt;/xs:annotation&gt;
+					&lt;/xs:element&gt;
+					&lt;xs:element name=&quot;providerOrganizationRefId&quot; type=&quot;gGenericRefIdPointerType&quot; minOccurs=&quot;1&quot;&gt;
+						&lt;xs:annotation&gt;
+							&lt;xs:appinfo&gt;
+								&lt;elementName&gt;Provider Organization RefId&lt;/elementName&gt;
+								&lt;sifChar&gt;M&lt;/sifChar&gt;
+							&lt;/xs:appinfo&gt;
+							&lt;xs:documentation&gt;
+								The refId of the organization (LEA, School or SEA) responsible for providing the student records, that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
@@ -574,7 +622,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Schema</strong>:
-                                                            <pre>&lt;!-- version 3.03.01 --&gt;
+                                                            <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;sreJobType&quot;&gt;
@@ -613,18 +661,42 @@
 								&lt;cedsURL/&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								The valid e-mail address of the entity making the request.
+								A valid e-mail address at the organization making the request.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
-					&lt;xs:element name=&quot;requesterOrgRefId&quot; type=&quot;gRefIdType&quot; minOccurs=&quot;1&quot;&gt;
+					&lt;xs:element name=&quot;requesterOrganizationRefId&quot; type=&quot;gGenericRefIdPointerType&quot; minOccurs=&quot;1&quot;&gt;
 						&lt;xs:annotation&gt;
 							&lt;xs:appinfo&gt;
 								&lt;elementName&gt;Requester Organization RefId&lt;/elementName&gt;
 								&lt;sifChar&gt;M&lt;/sifChar&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								The refId of the organization (LEA, school, state, etc.) responsible for the request that is resolvable by the provider.
+								The refId of the organization (LEA, School or SEA) responsible for the request that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
+							&lt;/xs:documentation&gt;
+						&lt;/xs:annotation&gt;
+					&lt;/xs:element&gt;
+					&lt;xs:element name=&quot;providerEmailAddress&quot; type=&quot;gEmailType&quot; minOccurs=&quot;0&quot;&gt;
+						&lt;xs:annotation&gt;
+							&lt;xs:appinfo&gt;
+								&lt;elementName&gt;Provider Email Address&lt;/elementName&gt;
+								&lt;sifChar&gt;O&lt;/sifChar&gt;
+								&lt;cedsId/&gt;
+								&lt;cedsURL/&gt;
+							&lt;/xs:appinfo&gt;
+							&lt;xs:documentation&gt;
+								A valid e-mail address at the organization providing the records.
+							&lt;/xs:documentation&gt;
+						&lt;/xs:annotation&gt;
+					&lt;/xs:element&gt;
+					&lt;xs:element name=&quot;providerOrganizationRefId&quot; type=&quot;gGenericRefIdPointerType&quot; minOccurs=&quot;1&quot;&gt;
+						&lt;xs:annotation&gt;
+							&lt;xs:appinfo&gt;
+								&lt;elementName&gt;Provider Organization RefId&lt;/elementName&gt;
+								&lt;sifChar&gt;M&lt;/sifChar&gt;
+							&lt;/xs:appinfo&gt;
+							&lt;xs:documentation&gt;
+								The refId of the organization (LEA, School or SEA) responsible for providing the student records, that is resolvable by the provider. In order to support this field, the SRE provider must offer up all the organization-type endpoints outside of the functional service so that the organization information can be resolved.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
@@ -925,7 +997,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Schema</strong>:
-                                                            <pre>&lt;!-- version 3.03.01 --&gt;
+                                                            <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;srePermissionRequestType&quot;&gt;
@@ -937,6 +1009,8 @@
 			&lt;/xs:appinfo&gt;
 			&lt;xs:documentation&gt;
 				Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a &quot;Permission Request&quot;, which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
+				
+				#TODO Need to add status to this object.
 			&lt;/xs:documentation&gt;
 		&lt;/xs:annotation&gt;
 		&lt;xs:complexContent&gt;
@@ -1071,7 +1145,7 @@
                                             <p>
                                                 <small>
                                                     <strong>Schema</strong>:
-                                                    <pre>&lt;!-- version 3.03.01 --&gt;
+                                                    <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;srePermissionRequestType&quot;&gt;
@@ -1083,6 +1157,8 @@
 			&lt;/xs:appinfo&gt;
 			&lt;xs:documentation&gt;
 				Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a &quot;Permission Request&quot;, which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
+				
+				#TODO Need to add status to this object.
 			&lt;/xs:documentation&gt;
 		&lt;/xs:annotation&gt;
 		&lt;xs:complexContent&gt;
@@ -1156,7 +1232,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Schema</strong>:
-                                                            <pre>&lt;!-- version 3.03.01 --&gt;
+                                                            <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;srePermissionRequestType&quot;&gt;
@@ -1168,6 +1244,8 @@
 			&lt;/xs:appinfo&gt;
 			&lt;xs:documentation&gt;
 				Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a &quot;Permission Request&quot;, which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
+				
+				#TODO Need to add status to this object.
 			&lt;/xs:documentation&gt;
 		&lt;/xs:annotation&gt;
 		&lt;xs:complexContent&gt;
@@ -1346,7 +1424,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Schema</strong>:
-                                                            <pre>&lt;!-- version 3.03.01 --&gt;
+                                                            <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;srePermissionRequestType&quot;&gt;
@@ -1358,6 +1436,8 @@
 			&lt;/xs:appinfo&gt;
 			&lt;xs:documentation&gt;
 				Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a &quot;Permission Request&quot;, which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
+				
+				#TODO Need to add status to this object.
 			&lt;/xs:documentation&gt;
 		&lt;/xs:annotation&gt;
 		&lt;xs:complexContent&gt;
@@ -4347,7 +4427,7 @@
                                             <p>
                                                 <small>
                                                     <strong>Schema</strong>:
-                                                    <pre>&lt;!-- version 3.03.01 --&gt;
+                                                    <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;sreReceiptType&quot;&gt;
@@ -4377,34 +4457,6 @@
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
-					&lt;xs:element name=&quot;receiverEmailAddress&quot; type=&quot;gEmailType&quot; minOccurs=&quot;1&quot;&gt;
-						&lt;xs:annotation&gt;
-							&lt;xs:appinfo&gt;
-								&lt;elementName&gt;Receiver Email Address&lt;/elementName&gt;
-								&lt;sifChar&gt;M&lt;/sifChar&gt;
-								&lt;cedsId/&gt;
-								&lt;cedsURL/&gt;
-							&lt;/xs:appinfo&gt;
-							&lt;xs:documentation&gt;
-								Valid e-mail address for the individual requesting the record that can be used to correspond out-of-band regarding this student record transfer if needed.
-							&lt;/xs:documentation&gt;
-						&lt;/xs:annotation&gt;
-					&lt;/xs:element&gt;
-					&lt;xs:element name=&quot;receiverOrganizationName&quot; type=&quot;xs:token&quot; minOccurs=&quot;1&quot;&gt;
-						&lt;xs:annotation&gt;
-							&lt;xs:appinfo&gt;
-								&lt;elementName&gt;Receiver Organization Name&lt;/elementName&gt;
-								&lt;sifChar&gt;M&lt;/sifChar&gt;
-								&lt;cedsId&gt;000204&lt;/cedsId&gt;
-								&lt;cedsURL&gt;
-									https://ceds.ed.gov/CEDSElementDetails.aspx?TermxTopicId=22713
-								&lt;/cedsURL&gt;
-							&lt;/xs:appinfo&gt;
-							&lt;xs:documentation&gt;
-								The name of a non-person entity such as an organization, institution, agency or business requesting the records.
-							&lt;/xs:documentation&gt;
-						&lt;/xs:annotation&gt;
-					&lt;/xs:element&gt;
 					&lt;xs:element name=&quot;receiverNCESSchoolCode&quot; type=&quot;xs:token&quot; minOccurs=&quot;0&quot;&gt;
 						&lt;xs:annotation&gt;
 							&lt;xs:appinfo&gt;
@@ -4416,7 +4468,7 @@
 								&lt;/cedsURL&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.
+								The NCES Code is a unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity. In this context, this code represents the school that the student is being enrolled into, if this SRE Job is used to describe a student enrollment transfer.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
@@ -4431,7 +4483,7 @@
 								&lt;/cedsURL&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.
+									The NCES Code is a unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity. In this context, this code represents the LEA that the student is being enrolled into, if this SRE Job is used to describe a student enrollment transfer.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
@@ -4503,7 +4555,7 @@
                                                     <p>
                                                         <small>
                                                             <strong>Schema</strong>:
-                                                            <pre>&lt;!-- version 3.03.01 --&gt;
+                                                            <pre>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot;&gt;
 	&lt;xs:include schemaLocation=&quot;../Entity/SIFglobal.xsd&quot;/&gt;
 	&lt;xs:complexType name=&quot;sreReceiptType&quot;&gt;
@@ -4533,34 +4585,6 @@
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
-					&lt;xs:element name=&quot;receiverEmailAddress&quot; type=&quot;gEmailType&quot; minOccurs=&quot;1&quot;&gt;
-						&lt;xs:annotation&gt;
-							&lt;xs:appinfo&gt;
-								&lt;elementName&gt;Receiver Email Address&lt;/elementName&gt;
-								&lt;sifChar&gt;M&lt;/sifChar&gt;
-								&lt;cedsId/&gt;
-								&lt;cedsURL/&gt;
-							&lt;/xs:appinfo&gt;
-							&lt;xs:documentation&gt;
-								Valid e-mail address for the individual requesting the record that can be used to correspond out-of-band regarding this student record transfer if needed.
-							&lt;/xs:documentation&gt;
-						&lt;/xs:annotation&gt;
-					&lt;/xs:element&gt;
-					&lt;xs:element name=&quot;receiverOrganizationName&quot; type=&quot;xs:token&quot; minOccurs=&quot;1&quot;&gt;
-						&lt;xs:annotation&gt;
-							&lt;xs:appinfo&gt;
-								&lt;elementName&gt;Receiver Organization Name&lt;/elementName&gt;
-								&lt;sifChar&gt;M&lt;/sifChar&gt;
-								&lt;cedsId&gt;000204&lt;/cedsId&gt;
-								&lt;cedsURL&gt;
-									https://ceds.ed.gov/CEDSElementDetails.aspx?TermxTopicId=22713
-								&lt;/cedsURL&gt;
-							&lt;/xs:appinfo&gt;
-							&lt;xs:documentation&gt;
-								The name of a non-person entity such as an organization, institution, agency or business requesting the records.
-							&lt;/xs:documentation&gt;
-						&lt;/xs:annotation&gt;
-					&lt;/xs:element&gt;
 					&lt;xs:element name=&quot;receiverNCESSchoolCode&quot; type=&quot;xs:token&quot; minOccurs=&quot;0&quot;&gt;
 						&lt;xs:annotation&gt;
 							&lt;xs:appinfo&gt;
@@ -4572,7 +4596,7 @@
 								&lt;/cedsURL&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.
+								The NCES Code is a unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity. In this context, this code represents the school that the student is being enrolled into, if this SRE Job is used to describe a student enrollment transfer.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;
@@ -4587,7 +4611,7 @@
 								&lt;/cedsURL&gt;
 							&lt;/xs:appinfo&gt;
 							&lt;xs:documentation&gt;
-								A unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity.
+									The NCES Code is a unique number or alphanumeric code assigned to an institution by a school, school system, a state, or other agency or entity. In this context, this code represents the LEA that the student is being enrolled into, if this SRE Job is used to describe a student enrollment transfer.
 							&lt;/xs:documentation&gt;
 						&lt;/xs:annotation&gt;
 					&lt;/xs:element&gt;

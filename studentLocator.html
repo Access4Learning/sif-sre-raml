@@ -1,0 +1,644 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SIF Student Locator API documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="generator" content="https://github.com/kevinrenskers/raml2html 0.28.0">
+
+    <script type="text/javascript">
+        var protocol = ((document.location.protocol === 'https:') ? 'https:': 'http:');
+        document.write('<link rel="stylesheet" href="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">');
+        document.write('<link rel="stylesheet" href="' + protocol + '//yandex.st/highlightjs/8.0/styles/github.min.css">');
+        document.write('<script type="text/javascript" src="' + protocol + '//code.jquery.com/jquery-1.11.0.min.js"><\/sc' + 'ript>');
+        document.write('<script type="text/javascript" src="' + protocol + '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"><\/sc' + 'ript>');
+    </script>
+
+    <style>
+        .parent {
+            color: #999;
+        }
+        .list-group-item > .badge {
+            float: none;
+            margin-right: 6px;
+        }
+        .panel-title > .methods {
+            float: right;
+        }
+        .badge {
+            border-radius: 0;
+            text-transform: uppercase;
+            width: 70px;
+            font-weight: normal;
+            color: #f3f3f6;
+            line-height: normal;
+        }
+        .badge_get {
+            background-color: #63a8e2;
+        }
+        .badge_post {
+            background-color: #6cbd7d;
+        }
+        .badge_put {
+            background-color: #22bac4;
+        }
+        .badge_delete {
+            background-color: #d26460;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
+        .panel-group .panel+.panel-white {
+            margin-top: 0;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+            border-radius: 0;
+        }
+        .panel-white:last-child {
+            border-bottom-color: white;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        .panel-white .panel-heading {
+            background: white;
+        }
+        .tab-pane ul {
+            padding-left: 2em;
+        }
+        .tab-pane h2 {
+            font-size: 1.2em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-pane h3 {
+            font-size: 1.1em;
+        }
+        .tab-content {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+        #sidebar {
+            margin-top: 30px;
+        }
+        .top-resource-description {
+            border-bottom: 1px solid #ddd;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #fcfcfc;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .panel > .panel-body > .panel-group > .panel:first-child .resource-description {
+            display: none;
+        }
+        .list-group .badge {
+            float: left;
+        }
+        .method_description {
+            margin-left: 85px;
+        }
+        .method_description p:last-child {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target="#sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9" role="main">
+                <div class="page-header">
+                    <h1>SIF Student Locator API documentation <small>version v3.3.0</small></h1>
+                    <p>https://sif3service.dev/v3.3.0/svcs/dev/requestProvider/studentLocator</p>
+
+                    
+                        <h3 id="Overview"><a href="#Overview">Overview</a></h3>
+                        <p>The Student Locator service is used to find a specific student in a SIF 3.x system when the refId of the student object is unknown. The primary use case is for use within the SIF Student Record Exchange, where it is used to find a student so that the records of that student can be requested for transfer.</p>
+
+                    
+                </div>
+
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_search" class="panel-title">Search for a single student</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+                                <div class="top-resource-description">
+                                    <p>This is a district request to a provider to return the targets and IDs for the students within the domain indicated by the identifying elements. The provider returns one Match marked <code>Valid</code>, or one or more Matches marked <code>Ambiguous</code>, or indicates an error.</p>
+<p><em>TODO:</em> Add standard SIF methods for providing <code>sortOrder</code>, <code>startRecord</code>, and <code>maximumRecordsReturned</code> (and other related parameters)</p>
+
+                                </div>
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+             <a class="collapsed" data-toggle="collapse" href="#panel__search">
+                <span class="parent"></span>/search
+            </a>
+
+            <span class="methods">
+                
+                    <a href="#" data-toggle="modal" data-target="#_search_get">
+                        <span class="badge badge_get">get</span>
+                    </a>
+                
+            </span>
+        </h4>
+    </div>
+    <div id="panel__search" class="panel-collapse collapse">
+        <div class="panel-body">
+            
+                <div class="resource-description">
+                    <p>This is a district request to a provider to return the targets and IDs for the students within the domain indicated by the identifying elements. The provider returns one Match marked <code>Valid</code>, or one or more Matches marked <code>Ambiguous</code>, or indicates an error.</p>
+<p><em>TODO:</em> Add standard SIF methods for providing <code>sortOrder</code>, <code>startRecord</code>, and <code>maximumRecordsReturned</code> (and other related parameters)</p>
+
+                </div>
+            
+
+            <div class="list-group">
+                
+                    <a href="#" data-toggle="modal" data-target="#_search_get" class="list-group-item">
+                        <span class="badge badge_get">get</span>
+                        <div class="method_description">
+                            <p>Submit a search query to the provider</p>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </a>
+                
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="modal fade" tabindex="0" id="_search_get">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <span class="badge badge_get">get</span>
+                            <span class="parent"></span>/search
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info"><p>Submit a search query to the provider</p>
+</div>
+
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#_search_get_request" data-toggle="tab">Request</a>
+                            </li>
+                            
+                                <li>
+                                    <a href="#_search_get_response" data-toggle="tab">Response</a>
+                                </li>
+                            
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="_search_get_request">
+                                
+
+                                
+
+                                
+                                    <h3>Query Parameters</h3>
+                                    <ul>
+                                        
+                                            <li>
+                                                <strong>givenName</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>The full legal first name given to a person at birth, baptism, or through legal change.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>John</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>middleName</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>A full legal middle name given to a person at birth, baptism, or through legal change.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>Jacob</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>familyName</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>The full legal last name borne in common by members of a family.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>Smith</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>suffix</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>An appendage, if any, used to denote a person&#39;s generation in his family (e.g., Jr., Sr., III).</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre><span class="hljs-variable">Jr</span>.</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>birthDate</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (date)
+                                                    
+                                                </em>
+
+                                                <p>The year, month and day on which a person was born, in YYYY-MM-DD format.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>1991-04-25</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>sex</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        one of (Male,Female)
+                                                    
+                                                </em>
+
+                                                <p>The concept describing the biological traits that distinguish the males and females of a species.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>Male</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>localId</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>A unique number or alphanumeric code assigned to a staff member by a district or LEA.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>120948125</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>stateProvinceId</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>A unique number or alphanumeric code assigned to a student by a state.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>e22cece3-baca-4c88-8485-cef3b869b670</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>stateProvince</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        one of (AK,AL,AR,AS,AZ,CA,CO,CT,DC,DE,FL,FM,GA,GU,HI,IA,ID,IL,IN,KS,KY,LA,MA,MD,ME,MH,MI,MN,MO,MP,MS,MT,NC,ND,NE,NH,NJ,NM,NV,NY,OH,OK,OR,PA,PR,PW,RI,SC,SD,TN,TX,UT,VA,VI,VT,WA,WI,WV,WY)
+                                                    
+                                                </em>
+
+                                                <p>The abbreviation for the state, province or outlying area that assigned the <code>stateProvinceId</code>.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>WA</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>gradeLevel</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        one of (IT,PR,PK,TK,KG,1,2,3,4,5,6,7,08,09,10,11,12,13,PS,UG,Other)
+                                                    
+                                                </em>
+
+                                                <p>The current grade or academic level of the student.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>09</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>projectedGraduationYear</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (integer)
+                                                    
+                                                </em>
+
+                                                <p>The year that the student is projected to graduate.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>2016</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>minimumMatchConfidence</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (number)
+                                                    
+                                                </em>
+
+                                                <p>The minimum confidence level that should be used to return matching records, represented by a decimal between <code>0</code> and <code>1</code>. For example, supplying a value of <code>0.9</code> instructs the provider only to return results that have a 90% confident matching record, or a value of <code>1</code> ensures that <em>only</em> exact matches are returned.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>0.95</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                    </ul>
+                                
+
+                                
+                            </div>
+
+                            
+                                <div class="tab-pane" id="_search_get_response">
+                                    
+                                        <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
+                                        <p>Successful search.</p>
+
+
+                                        
+
+                                        
+                                            <h3>Body</h3>
+                                            
+                                                <p><strong>Type: application/xml</strong></p>
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre><span class="hljs-pi">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">studentLocatorSearchResults</span>&gt;</span>
+	<span class="hljs-tag">&lt;<span class="hljs-title">studentLocatorSearchResult</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">matchConfidence</span>&gt;</span>0.955543239023<span class="hljs-tag">&lt;/<span class="hljs-title">matchConfidence</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">target</span>&gt;</span>https://sif3service.dev/svcs/prod/requestProvider/xSre/75d3909e-a5fa-418b-b19c-a13e7bfdc1e7<span class="hljs-tag">&lt;/<span class="hljs-title">target</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">localId</span>&gt;</span>1029460298<span class="hljs-tag">&lt;/<span class="hljs-title">localId</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">stateProvinceId</span>&gt;</span>e22cece3-baca-4c88-8485-cef3b869b670<span class="hljs-tag">&lt;/<span class="hljs-title">stateProvinceId</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">givenName</span>&gt;</span>John<span class="hljs-tag">&lt;/<span class="hljs-title">givenName</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">middleName</span>&gt;</span>Jacob<span class="hljs-tag">&lt;/<span class="hljs-title">middleName</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">familyName</span>&gt;</span>Smith<span class="hljs-tag">&lt;/<span class="hljs-title">familyName</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">suffix</span>&gt;</span>Jr.<span class="hljs-tag">&lt;/<span class="hljs-title">suffix</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">birthdate</span>&gt;</span>1990-04-25<span class="hljs-tag">&lt;/<span class="hljs-title">birthdate</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">stateProvice</span>&gt;</span>WA<span class="hljs-tag">&lt;/<span class="hljs-title">stateProvice</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">gradeLevel</span>&gt;</span>09<span class="hljs-tag">&lt;/<span class="hljs-title">gradeLevel</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">projectedGraduationYear</span>&gt;</span>2019<span class="hljs-tag">&lt;/<span class="hljs-title">projectedGraduationYear</span>&gt;</span>
+	<span class="hljs-tag">&lt;/<span class="hljs-title">studentLocatorSearchResult</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">studentLocatorSearchResults</span>&gt;</span></pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            
+                                        
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 id="_bulkSearch" class="panel-title">Search for a group of students</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            
+                                <div class="top-resource-description">
+                                    <p>Used for finding large groups of known students e.g., for student recovery (“Where did these 10,000 students end up?”)</p>
+<p><em>For future use.</em></p>
+
+                                </div>
+                            
+
+                            <div class="panel-group">
+                                <div class="panel panel-white">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+             <a class="collapsed" data-toggle="collapse" href="#panel__bulkSearch">
+                <span class="parent"></span>/bulkSearch
+            </a>
+
+            <span class="methods">
+                
+            </span>
+        </h4>
+    </div>
+    <div id="panel__bulkSearch" class="panel-collapse collapse">
+        <div class="panel-body">
+            
+                <div class="resource-description">
+                    <p>Used for finding large groups of known students e.g., for student recovery (“Where did these 10,000 students end up?”)</p>
+<p><em>For future use.</em></p>
+
+                </div>
+            
+
+            <div class="list-group">
+                
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+
+            <div class="col-md-3">
+                <div id="sidebar" class="hidden-print affix" role="complementary">
+                    <ul class="nav nav-pills nav-stacked">
+                        
+                            <li><a href="#_search">Search for a single student</a></li>
+                        
+                            <li><a href="#_bulkSearch">Search for a group of students</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

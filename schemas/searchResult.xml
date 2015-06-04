@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<studentLocatorSearchResults>
+	<studentLocatorSearchResult>
+		<matchConfidence>0.955543239023</matchConfidence>
+		<target>https://sif3service.dev/svcs/prod/requestProvider/xSre/75d3909e-a5fa-418b-b19c-a13e7bfdc1e7</target>
+		<localId>1029460298</localId>
+		<stateProvinceId>e22cece3-baca-4c88-8485-cef3b869b670</stateProvinceId>
+		<givenName>John</givenName>
+		<middleName>Jacob</middleName>
+		<familyName>Smith</familyName>
+		<suffix>Jr.</suffix>
+		<birthdate>1990-04-25</birthdate>
+		<stateProvice>WA</stateProvice>
+		<gradeLevel>09</gradeLevel>
+		<projectedGraduationYear>2019</projectedGraduationYear>
+	</studentLocatorSearchResult>
+</studentLocatorSearchResults>

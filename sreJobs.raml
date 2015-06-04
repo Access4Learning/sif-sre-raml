@@ -1,10 +1,10 @@
 #%RAML 0.8
 ---
 title: SIF Student Record Exchange
-version: v3.3
+version: v3.3.1
 mediaType:  application/xml
-protocols: [HTTP, HTTPS]
-baseUri: https://sif3service.dev/{version}/svcs/dev/requestProvider/sreJobs
+protocols: [HTTPS]
+baseUri: https://sif3service.dev/{version}/svcs/dev/requestProvider
 
 documentation:
   - title: Overview
@@ -15,7 +15,7 @@ documentation:
         3. Fetching the record
         4. Sending a receipt back to the responder
 
-/:
+/sreJobs:
   displayName: |
     Phase 1: Job Object
   description: Creating a new SRE Job begins the process of requesting a student's records, but does not immediately provide the records.
@@ -47,7 +47,7 @@ documentation:
         200:
           description: Job was successfully deleted. #TODO confirm that 200 is the proper status code to return for a delete operation.
       
-/{jobId}/permissionRequests:
+/sreJobs/{jobId}/permissionRequests:
   displayName: |
     Phase 2: Permission Request
   description: Before a requester can access the `sre` object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the `sre` object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
@@ -94,15 +94,15 @@ documentation:
               schema: !include schemas/srePermissionRequest.xsd
     
 
-/{jobId}/sre:
+/sreJobs/{jobId}/xSre:
   displayName: |
     Phase 3: SRE Object
-  description: Once the consumer has proper permissions, this phase requests the actual student record object. The provider should check that the requestToken is valid before delivering the SRE object.
+  description: Once the consumer has proper permissions, this phase requests the actual student record object. The provider should check that the requestToken is valid before delivering the xSre object.
   get:
     description: Get the object
     headers:
       xQuery:
-        description: The values requested from the provider in the SRE object.
+        description: The values requested from the provider in the xSre object.
         required: false
         type: string
       requestToken:
@@ -111,12 +111,12 @@ documentation:
         type: string
     responses:
       200:
-        description: Returns the SRE object.
+        description: Returns the xSre object.
         body:
           application/xml:
-            schema: !include schemas/SIFNAsre.xsd
+            schema: !include https://github.com/SIFAssociation/NADM/raw/master/Report/SIFNAxSRE.xsd
 
-/{jobId}/receipt:
+/sreJobs/{jobId}/receipt:
   displayName: |
     Phase 4: Receipt
   description: Notifies the provider of the status of the record request, with additional receipt codes that the provider may be able to act upon. For example, this object could report that a student has been sucessfully enrolled in a receiving school district.

@@ -115,8 +115,8 @@
         <div class="row">
             <div class="col-md-9" role="main">
                 <div class="page-header">
-                    <h1>SIF Student Record Exchange API documentation <small>version v3.3</small></h1>
-                    <p>https://sif3service.dev/v3.3/svcs/dev/requestProvider/sreJobs</p>
+                    <h1>SIF Student Record Exchange API documentation <small>version v3.3.1</small></h1>
+                    <p>https://sif3service.dev/v3.3.1/svcs/dev/requestProvider</p>
 
                     
                         <h3 id="Overview"><a href="#Overview">Overview</a></h3>
@@ -134,7 +134,7 @@
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="_" class="panel-title">Phase 1: Job Object
+                            <h3 id="_sreJobs" class="panel-title">Phase 1: Job Object
 </h3>
                         </div>
 
@@ -150,20 +150,20 @@
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-             <a class="collapsed" data-toggle="collapse" href="#panel__">
-                <span class="parent"></span>/
+             <a class="collapsed" data-toggle="collapse" href="#panel__sreJobs">
+                <span class="parent"></span>/sreJobs
             </a>
 
             <span class="methods">
                 
-                    <a href="#" data-toggle="modal" data-target="#__post">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs_post">
                         <span class="badge badge_post">post</span>
                     </a>
                 
             </span>
         </h4>
     </div>
-    <div id="panel__" class="panel-collapse collapse">
+    <div id="panel__sreJobs" class="panel-collapse collapse">
         <div class="panel-body">
             
                 <div class="resource-description">
@@ -174,7 +174,7 @@
 
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#__post" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
                             <p>Submit a new SRE job for processing.</p>
@@ -188,14 +188,14 @@
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="__post">
+        <div class="modal fade" tabindex="0" id="_sreJobs_post">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_post">post</span>
-                            <span class="parent"></span>/
+                            <span class="parent"></span>/sreJobs
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -205,18 +205,18 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#__post_request" data-toggle="tab">Request</a>
+                                <a href="#_sreJobs_post_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#__post_response" data-toggle="tab">Response</a>
+                                    <a href="#_sreJobs_post_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="__post_request">
+                            <div class="tab-pane active" id="_sreJobs_post_request">
                                 
 
                                 
@@ -354,7 +354,7 @@
                             </div>
 
                             
-                                <div class="tab-pane" id="__post_response">
+                                <div class="tab-pane" id="_sreJobs_post_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2>
                                         <p>Successfully created the job.</p>
@@ -504,30 +504,30 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-             <a class="collapsed" data-toggle="collapse" href="#panel____jobId_">
-                <span class="parent">/</span>/{jobId}
+             <a class="collapsed" data-toggle="collapse" href="#panel__sreJobs__jobId_">
+                <span class="parent">/sreJobs</span>/{jobId}
             </a>
 
             <span class="methods">
                 
-                    <a href="#" data-toggle="modal" data-target="#___jobId__get">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__get">
                         <span class="badge badge_get">get</span>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#___jobId__delete">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__delete">
                         <span class="badge badge_delete">delete</span>
                     </a>
                 
             </span>
         </h4>
     </div>
-    <div id="panel____jobId_" class="panel-collapse collapse">
+    <div id="panel__sreJobs__jobId_" class="panel-collapse collapse">
         <div class="panel-body">
             
 
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#___jobId__get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Get the details of a specific job, identified by {id}.</p>
@@ -536,7 +536,7 @@
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#___jobId__delete" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__delete" class="list-group-item">
                         <span class="badge badge_delete">delete</span>
                         <div class="method_description">
                             <p>Delete the job. This also deletes all child resources (permissionRequest, sre, receipt).</p>
@@ -550,14 +550,14 @@
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="___jobId__get">
+        <div class="modal fade" tabindex="0" id="_sreJobs__jobId__get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent">/</span>/{jobId}
+                            <span class="parent">/sreJobs</span>/{jobId}
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -567,18 +567,18 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#___jobId__get_request" data-toggle="tab">Request</a>
+                                <a href="#_sreJobs__jobId__get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#___jobId__get_response" data-toggle="tab">Response</a>
+                                    <a href="#_sreJobs__jobId__get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="___jobId__get_request">
+                            <div class="tab-pane active" id="_sreJobs__jobId__get_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -606,7 +606,7 @@
                             </div>
 
                             
-                                <div class="tab-pane" id="___jobId__get_response">
+                                <div class="tab-pane" id="_sreJobs__jobId__get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         
@@ -749,14 +749,14 @@
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="___jobId__delete">
+        <div class="modal fade" tabindex="0" id="_sreJobs__jobId__delete">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_delete">delete</span>
-                            <span class="parent">/</span>/{jobId}
+                            <span class="parent">/sreJobs</span>/{jobId}
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -766,18 +766,18 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#___jobId__delete_request" data-toggle="tab">Request</a>
+                                <a href="#_sreJobs__jobId__delete_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#___jobId__delete_response" data-toggle="tab">Response</a>
+                                    <a href="#_sreJobs__jobId__delete_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="___jobId__delete_request">
+                            <div class="tab-pane active" id="_sreJobs__jobId__delete_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -805,7 +805,7 @@
                             </div>
 
                             
-                                <div class="tab-pane" id="___jobId__delete_response">
+                                <div class="tab-pane" id="_sreJobs__jobId__delete_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         <p>Job was successfully deleted.</p>
@@ -835,7 +835,7 @@
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="__jobId__permissionRequests" class="panel-title">Phase 2: Permission Request
+                            <h3 id="_sreJobs__jobId__permissionRequests" class="panel-title">Phase 2: Permission Request
 </h3>
                         </div>
 
@@ -851,24 +851,24 @@
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-             <a class="collapsed" data-toggle="collapse" href="#panel___jobId__permissionRequests">
-                <span class="parent"></span>/{jobId}/permissionRequests
+             <a class="collapsed" data-toggle="collapse" href="#panel__sreJobs__jobId__permissionRequests">
+                <span class="parent"></span>/sreJobs/{jobId}/permissionRequests
             </a>
 
             <span class="methods">
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__permissionRequests_get">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__permissionRequests_get">
                         <span class="badge badge_get">get</span>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__permissionRequests_post">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__permissionRequests_post">
                         <span class="badge badge_post">post</span>
                     </a>
                 
             </span>
         </h4>
     </div>
-    <div id="panel___jobId__permissionRequests" class="panel-collapse collapse">
+    <div id="panel__sreJobs__jobId__permissionRequests" class="panel-collapse collapse">
         <div class="panel-body">
             
                 <div class="resource-description">
@@ -879,7 +879,7 @@
 
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__permissionRequests_get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__permissionRequests_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Retrieves the list of permission requests.</p>
@@ -888,7 +888,7 @@
                         <div class="clearfix"></div>
                     </a>
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__permissionRequests_post" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__permissionRequests_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
                             <p>Issues a new permission request. (Delayed response)</p>
@@ -902,14 +902,14 @@
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="__jobId__permissionRequests_get">
+        <div class="modal fade" tabindex="0" id="_sreJobs__jobId__permissionRequests_get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent"></span>/{jobId}/permissionRequests
+                            <span class="parent"></span>/sreJobs/{jobId}/permissionRequests
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -919,18 +919,18 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#__jobId__permissionRequests_get_request" data-toggle="tab">Request</a>
+                                <a href="#_sreJobs__jobId__permissionRequests_get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#__jobId__permissionRequests_get_response" data-toggle="tab">Response</a>
+                                    <a href="#_sreJobs__jobId__permissionRequests_get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="__jobId__permissionRequests_get_request">
+                            <div class="tab-pane active" id="_sreJobs__jobId__permissionRequests_get_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -980,7 +980,7 @@
                             </div>
 
                             
-                                <div class="tab-pane" id="__jobId__permissionRequests_get_response">
+                                <div class="tab-pane" id="_sreJobs__jobId__permissionRequests_get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         <p>Success</p>
@@ -1065,14 +1065,14 @@
             </div>
         </div>
     
-        <div class="modal fade" tabindex="0" id="__jobId__permissionRequests_post">
+        <div class="modal fade" tabindex="0" id="_sreJobs__jobId__permissionRequests_post">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_post">post</span>
-                            <span class="parent"></span>/{jobId}/permissionRequests
+                            <span class="parent"></span>/sreJobs/{jobId}/permissionRequests
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -1082,18 +1082,18 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#__jobId__permissionRequests_post_request" data-toggle="tab">Request</a>
+                                <a href="#_sreJobs__jobId__permissionRequests_post_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#__jobId__permissionRequests_post_response" data-toggle="tab">Response</a>
+                                    <a href="#_sreJobs__jobId__permissionRequests_post_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="__jobId__permissionRequests_post_request">
+                            <div class="tab-pane active" id="_sreJobs__jobId__permissionRequests_post_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -1207,7 +1207,7 @@
                             </div>
 
                             
-                                <div class="tab-pane" id="__jobId__permissionRequests_post_response">
+                                <div class="tab-pane" id="_sreJobs__jobId__permissionRequests_post_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/202" target="_blank">202</a></h2>
                                         <p>Delayed response accepted - TODO figure out how to specify text response</p>
@@ -1306,26 +1306,26 @@
     <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-             <a class="collapsed" data-toggle="collapse" href="#panel___jobId__permissionRequests__id_">
-                <span class="parent">/{jobId}/permissionRequests</span>/{id}
+             <a class="collapsed" data-toggle="collapse" href="#panel__sreJobs__jobId__permissionRequests__id_">
+                <span class="parent">/sreJobs/{jobId}/permissionRequests</span>/{id}
             </a>
 
             <span class="methods">
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__permissionRequests__id__get">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__permissionRequests__id__get">
                         <span class="badge badge_get">get</span>
                     </a>
                 
             </span>
         </h4>
     </div>
-    <div id="panel___jobId__permissionRequests__id_" class="panel-collapse collapse">
+    <div id="panel__sreJobs__jobId__permissionRequests__id_" class="panel-collapse collapse">
         <div class="panel-body">
             
 
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__permissionRequests__id__get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__permissionRequests__id__get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Fetches the details about the specified permission request.</p>
@@ -1339,14 +1339,14 @@
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="__jobId__permissionRequests__id__get">
+        <div class="modal fade" tabindex="0" id="_sreJobs__jobId__permissionRequests__id__get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent">/{jobId}/permissionRequests</span>/{id}
+                            <span class="parent">/sreJobs/{jobId}/permissionRequests</span>/{id}
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -1356,18 +1356,18 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#__jobId__permissionRequests__id__get_request" data-toggle="tab">Request</a>
+                                <a href="#_sreJobs__jobId__permissionRequests__id__get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#__jobId__permissionRequests__id__get_response" data-toggle="tab">Response</a>
+                                    <a href="#_sreJobs__jobId__permissionRequests__id__get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="__jobId__permissionRequests__id__get_request">
+                            <div class="tab-pane active" id="_sreJobs__jobId__permissionRequests__id__get_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -1407,7 +1407,7 @@
                             </div>
 
                             
-                                <div class="tab-pane" id="__jobId__permissionRequests__id__get_response">
+                                <div class="tab-pane" id="_sreJobs__jobId__permissionRequests__id__get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         <p>Success</p>
@@ -1504,7 +1504,7 @@
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="__jobId__sre" class="panel-title">Phase 3: SRE Object
+                            <h3 id="_sreJobs__jobId__xSre" class="panel-title">Phase 3: SRE Object
 </h3>
                         </div>
 
@@ -1520,20 +1520,20 @@
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-             <a class="collapsed" data-toggle="collapse" href="#panel___jobId__sre">
-                <span class="parent"></span>/{jobId}/sre
+             <a class="collapsed" data-toggle="collapse" href="#panel__sreJobs__jobId__xSre">
+                <span class="parent"></span>/sreJobs/{jobId}/xSre
             </a>
 
             <span class="methods">
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__sre_get">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__xSre_get">
                         <span class="badge badge_get">get</span>
                     </a>
                 
             </span>
         </h4>
     </div>
-    <div id="panel___jobId__sre" class="panel-collapse collapse">
+    <div id="panel__sreJobs__jobId__xSre" class="panel-collapse collapse">
         <div class="panel-body">
             
                 <div class="resource-description">
@@ -1544,7 +1544,7 @@
 
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__sre_get" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__xSre_get" class="list-group-item">
                         <span class="badge badge_get">get</span>
                         <div class="method_description">
                             <p>Get the object</p>
@@ -1558,14 +1558,14 @@
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="__jobId__sre_get">
+        <div class="modal fade" tabindex="0" id="_sreJobs__jobId__xSre_get">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_get">get</span>
-                            <span class="parent"></span>/{jobId}/sre
+                            <span class="parent"></span>/sreJobs/{jobId}/xSre
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -1575,18 +1575,18 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#__jobId__sre_get_request" data-toggle="tab">Request</a>
+                                <a href="#_sreJobs__jobId__xSre_get_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#__jobId__sre_get_response" data-toggle="tab">Response</a>
+                                    <a href="#_sreJobs__jobId__xSre_get_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="__jobId__sre_get_request">
+                            <div class="tab-pane active" id="_sreJobs__jobId__xSre_get_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -1645,7 +1645,7 @@
                             </div>
 
                             
-                                <div class="tab-pane" id="__jobId__sre_get_response">
+                                <div class="tab-pane" id="_sreJobs__jobId__xSre_get_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2>
                                         <p>Returns the SRE object.</p>
@@ -4311,7 +4311,7 @@
                 
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 id="__jobId__receipt" class="panel-title">Phase 4: Receipt
+                            <h3 id="_sreJobs__jobId__receipt" class="panel-title">Phase 4: Receipt
 </h3>
                         </div>
 
@@ -4327,20 +4327,20 @@
                                 <div class="panel panel-white">
     <div class="panel-heading">
         <h4 class="panel-title">
-             <a class="collapsed" data-toggle="collapse" href="#panel___jobId__receipt">
-                <span class="parent"></span>/{jobId}/receipt
+             <a class="collapsed" data-toggle="collapse" href="#panel__sreJobs__jobId__receipt">
+                <span class="parent"></span>/sreJobs/{jobId}/receipt
             </a>
 
             <span class="methods">
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__receipt_post">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__receipt_post">
                         <span class="badge badge_post">post</span>
                     </a>
                 
             </span>
         </h4>
     </div>
-    <div id="panel___jobId__receipt" class="panel-collapse collapse">
+    <div id="panel__sreJobs__jobId__receipt" class="panel-collapse collapse">
         <div class="panel-body">
             
                 <div class="resource-description">
@@ -4351,7 +4351,7 @@
 
             <div class="list-group">
                 
-                    <a href="#" data-toggle="modal" data-target="#__jobId__receipt_post" class="list-group-item">
+                    <a href="#" data-toggle="modal" data-target="#_sreJobs__jobId__receipt_post" class="list-group-item">
                         <span class="badge badge_post">post</span>
                         <div class="method_description">
                             <p>Post a new receipt object to the provider.</p>
@@ -4365,14 +4365,14 @@
     </div>
 
     
-        <div class="modal fade" tabindex="0" id="__jobId__receipt_post">
+        <div class="modal fade" tabindex="0" id="_sreJobs__jobId__receipt_post">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title" id="myModalLabel">
                             <span class="badge badge_post">post</span>
-                            <span class="parent"></span>/{jobId}/receipt
+                            <span class="parent"></span>/sreJobs/{jobId}/receipt
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -4382,18 +4382,18 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
                             <li class="active">
-                                <a href="#__jobId__receipt_post_request" data-toggle="tab">Request</a>
+                                <a href="#_sreJobs__jobId__receipt_post_request" data-toggle="tab">Request</a>
                             </li>
                             
                                 <li>
-                                    <a href="#__jobId__receipt_post_response" data-toggle="tab">Response</a>
+                                    <a href="#_sreJobs__jobId__receipt_post_response" data-toggle="tab">Response</a>
                                 </li>
                             
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="__jobId__receipt_post_request">
+                            <div class="tab-pane active" id="_sreJobs__jobId__receipt_post_request">
                                 
                                     <h3>URI Parameters</h3>
                                     <ul>
@@ -4538,7 +4538,7 @@
                             </div>
 
                             
-                                <div class="tab-pane" id="__jobId__receipt_post_response">
+                                <div class="tab-pane" id="_sreJobs__jobId__receipt_post_response">
                                     
                                         <h2>HTTP status code <a href="http://httpstatus.es/201" target="_blank">201</a></h2>
                                         <p>The receipt was delivered to the provider.</p>
@@ -4686,16 +4686,16 @@
                 <div id="sidebar" class="hidden-print affix" role="complementary">
                     <ul class="nav nav-pills nav-stacked">
                         
-                            <li><a href="#_">Phase 1: Job Object
+                            <li><a href="#_sreJobs">Phase 1: Job Object
 </a></li>
                         
-                            <li><a href="#__jobId__permissionRequests">Phase 2: Permission Request
+                            <li><a href="#_sreJobs__jobId__permissionRequests">Phase 2: Permission Request
 </a></li>
                         
-                            <li><a href="#__jobId__sre">Phase 3: SRE Object
+                            <li><a href="#_sreJobs__jobId__xSre">Phase 3: SRE Object
 </a></li>
                         
-                            <li><a href="#__jobId__receipt">Phase 4: Receipt
+                            <li><a href="#_sreJobs__jobId__receipt">Phase 4: Receipt
 </a></li>
                         
                     </ul>

@@ -373,7 +373,7 @@
                                                     
                                                 </em>
 
-                                                <p>A unique number or alphanumeric code assigned to a staff member by a district or LEA.</p>
+                                                <p>A unique number or alphanumeric code assigned to a student by a district or LEA.</p>
 
 
                                                 
@@ -407,6 +407,88 @@
                                                         <small>
                                                             <strong>Example</strong>:
                                                             <pre>e22cece3-baca-4c88-8485-cef3b869b670</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>otherStudentId</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>Any other student identifier used to locate a student.</p>
+
+
+                                                
+
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>otherStudentIdentificationSystem</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        one of (CanadianSIN,District,Family,Federal,NationalMigrant,School,SSN,State,StateMigrant)
+                                                    
+                                                </em>
+
+                                                <p>If using the <code>otherStudentIdentifier</code>, specify the identification system being used.</p>
+
+
+                                                
+
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>organizationId</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (string)
+                                                    
+                                                </em>
+
+                                                <p>The ID of the organization provided above.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>013948120948</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
+                                                <strong>organizationIdentificationSystem</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        one of (School,ACT,LEA,SEA,NCES,Federal,DUNS,OtherFederal,Other)
+                                                    
+                                                </em>
+
+                                                <p>The type of local organization ID to include in the search. For example, school ID or LEA ID.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre><span class="hljs-keyword">LEA</span></pre>
                                                         </small>
                                                     </p>
                                                 
@@ -461,6 +543,30 @@
                                             </li>
                                         
                                             <li>
+                                                <strong>schoolYear</strong>
+                                                <em>
+                                                    
+                                                    
+                                                        (integer)
+                                                    
+                                                </em>
+
+                                                <p>The time frame or context that matches the search criteria provided. For example, if you specify gradeLevel, this field is used to match students based on that year. Specify the ending year of the academic year.</p>
+
+
+                                                
+
+                                                
+                                                    <p>
+                                                        <small>
+                                                            <strong>Example</strong>:
+                                                            <pre>2014</pre>
+                                                        </small>
+                                                    </p>
+                                                
+                                            </li>
+                                        
+                                            <li>
                                                 <strong>projectedGraduationYear</strong>
                                                 <em>
                                                     
@@ -469,7 +575,7 @@
                                                     
                                                 </em>
 
-                                                <p>The year that the student is projected to graduate.</p>
+                                                <p>The year that the student is projected to graduate from high school.</p>
 
 
                                                 
@@ -541,6 +647,10 @@
 		<span class="hljs-tag">&lt;<span class="hljs-title">target</span>&gt;</span>https://sif3service.dev/svcs/prod/requestProvider/xSre/75d3909e-a5fa-418b-b19c-a13e7bfdc1e7<span class="hljs-tag">&lt;/<span class="hljs-title">target</span>&gt;</span>
 		<span class="hljs-tag">&lt;<span class="hljs-title">localId</span>&gt;</span>1029460298<span class="hljs-tag">&lt;/<span class="hljs-title">localId</span>&gt;</span>
 		<span class="hljs-tag">&lt;<span class="hljs-title">stateProvinceId</span>&gt;</span>e22cece3-baca-4c88-8485-cef3b869b670<span class="hljs-tag">&lt;/<span class="hljs-title">stateProvinceId</span>&gt;</span>
+		<span class="hljs-tag">&lt;<span class="hljs-title">organizationIdType</span>&gt;</span> <span class="hljs-comment">&lt;!-- returns the entity that provides the record --&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-title">type</span>&gt;</span>LEA<span class="hljs-tag">&lt;/<span class="hljs-title">type</span>&gt;</span>
+			<span class="hljs-tag">&lt;<span class="hljs-title">value</span>&gt;</span>1234<span class="hljs-tag">&lt;/<span class="hljs-title">value</span>&gt;</span>
+		<span class="hljs-tag">&lt;/<span class="hljs-title">organizationIdType</span>&gt;</span>
 		<span class="hljs-tag">&lt;<span class="hljs-title">givenName</span>&gt;</span>John<span class="hljs-tag">&lt;/<span class="hljs-title">givenName</span>&gt;</span>
 		<span class="hljs-tag">&lt;<span class="hljs-title">middleName</span>&gt;</span>Jacob<span class="hljs-tag">&lt;/<span class="hljs-title">middleName</span>&gt;</span>
 		<span class="hljs-tag">&lt;<span class="hljs-title">familyName</span>&gt;</span>Smith<span class="hljs-tag">&lt;/<span class="hljs-title">familyName</span>&gt;</span>

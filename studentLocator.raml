@@ -49,7 +49,7 @@ documentation:
           - Male
           - Female
       localId:
-        description: A unique number or alphanumeric code assigned to a staff member by a district or LEA.
+        description: A unique number or alphanumeric code assigned to a student by a district or LEA.
         type: string
         maxLength: 40
         example: "120948125"
@@ -58,6 +58,40 @@ documentation:
         type: string
         maxLength: 40
         example: e22cece3-baca-4c88-8485-cef3b869b670
+      otherStudentId:
+        description: Any other student identifier used to locate a student.
+        type: string
+      otherStudentIdentificationSystem:
+        description: If using the `otherStudentIdentifier`, specify the identification system being used.
+        type: string
+        enum:
+          - CanadianSIN
+          - District
+          - Family
+          - Federal
+          - NationalMigrant
+          - School
+          - SSN
+          - State
+          - StateMigrant
+      organizationId:
+        description: The ID of the organization provided above.
+        type: string
+        example: 013948120948
+      organizationIdentificationSystem:
+        description: The type of local organization ID to include in the search. For example, school ID or LEA ID.
+        type: string
+        example: LEA
+        enum:
+          - School
+          - ACT
+          - LEA
+          - SEA
+          - NCES
+          - Federal
+          - DUNS
+          - OtherFederal
+          - Other
       stateProvince:
         description: |
           The abbreviation for the state, province or outlying area that assigned the `stateProvinceId`.
@@ -149,8 +183,14 @@ documentation:
           - UG
           - Other
         example: "09"
+      schoolYear:
+        description: The time frame or context that matches the search criteria provided. For example, if you specify gradeLevel, this field is used to match students based on that year. Specify the ending year of the academic year.
+        type: integer
+        example: "2014"
+        minimum: 1950
+        maximum: 2049
       projectedGraduationYear:
-        description: The year that the student is projected to graduate.
+        description: The year that the student is projected to graduate from high school.
         type: integer
         example: "2016"
         minimum: 1950

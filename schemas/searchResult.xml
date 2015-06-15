@@ -3,10 +3,31 @@
 	<studentLocatorSearchResult>
 		<matchStatus>Ambiguous</matchStatus>
 		<matchConfidence>0.955543239023</matchConfidence>
-		<target>https://sif3service.dev/svcs/prod/requestProvider/xSre/75d3909e-a5fa-418b-b19c-a13e7bfdc1e7</target>
-		<!--
-			Or perhaps we add <targets> to provide multiple?
-		-->
+		<target><!-- The target is used in other operations, like the Student Record Exchange. -->
+			<href>https://sif3service.dev/svcs/prod/requestProvider/xSre/75d3909e-a5fa-418b-b19c-a13e7bfdc1e7</href>
+			<juristdiction>State</juristdiction>
+			<objectType>xSre</objectType>
+		</target>		
+		<otherTargets>
+			<target>
+				<href>...</href>
+				<juristdiction>LEA</juristdiction>
+				<objectType>xSre</objectType>
+			</target>
+			<target>
+				<href>...</href>
+				<juristdiction>LEA</juristdiction>
+				<objectType>Gradebook</objectType>
+			</target>
+			<target>
+				<href>...</href>
+				<juristdiction>LEA</juristdiction>
+			</target>
+			<target>
+				<href>...</href>
+				<juristdiction>LEA</juristdiction>
+			</target>
+		</otherTargets>
 		<localId>1029460298</localId>
 		<stateProvinceId>e22cece3-baca-4c88-8485-cef3b869b670</stateProvinceId>
 		<organizationIdType> <!-- returns the entity that provides the record -->
@@ -26,5 +47,6 @@
 		<gradeLevel>09</gradeLevel>
 		<schoolYear>2014</schoolYear>
 		<projectedGraduationYear>2019</projectedGraduationYear>
+		<schoolOfEnrollment><!--... returns an xSchool object ...--></schoolOfEnrollment>
 	</studentLocatorSearchResult>
 </studentLocatorSearchResults>

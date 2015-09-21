@@ -15,7 +15,7 @@ require 'URI'
 directory = '.'
 infile = ARGV[0].to_s
 outfile = (ARGV[1] || infile.gsub(".raml", ".html")).to_s
-raise Exception.new("Please specify IN and OUT files.") if infile == '' || outfile == ''
+raise Exception.new("Usage: ./raml-autogen.rb infile.raml outfile.html") if infile == '' || outfile == ''
 
 def reload_uri(local_filename)
   filepath = File.realpath local_filename
@@ -50,7 +50,7 @@ dw.interval = 1.0
 dw.add_observer do |*args|
   args.each do |event|
     if File.join(directory, infile) == event.path && event.type.to_s == 'modified'
-      `raml2html -i #{infile} -o #{outfile}`
+      `raml2html -t resource-sif.nunjucks -i #{infile} -o #{outfile}`
       puts "#{Time.now.strftime("%I:%M:%S")} \
         Generated #{outfile} (since #{event.path} #{event.type})"
       reload_uri(outfile)

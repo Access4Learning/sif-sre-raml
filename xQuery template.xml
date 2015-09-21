@@ -1,0 +1,15 @@
+<xquerys xmlns="http://sifassociation.org/infrastructure/3.0">
+	<xquery id="StudentLocatorSearch">
+		<description>Conduct a probabalistic search for a set of students based on various query parameters and a match confidence.</description>
+		<script></script>
+		<parameters>
+			<parameter name="givenName" type="xs:token" default="" description="" required="false">
+				<enumerations>
+					<enumeration code="0123">Family</enumeration>
+				</enumerations>
+				
+				<range start="0" end="1" />
+			</parameter>
+		</parameters>
+	</xquery>
+</xquerys>

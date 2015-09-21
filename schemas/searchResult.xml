@@ -3,31 +3,41 @@
 	<studentLocatorSearchResult>
 		<matchStatus>Ambiguous</matchStatus>
 		<matchConfidence>0.955543239023</matchConfidence>
-		<target><!-- The target is used in other operations, like the Student Record Exchange. -->
-			<href>https://sif3service.dev/svcs/prod/requestProvider/xSre/75d3909e-a5fa-418b-b19c-a13e7bfdc1e7</href>
-			<juristdiction>State</juristdiction>
-			<objectType>xSre</objectType>
-		</target>		
-		<otherTargets>
-			<target>
-				<href>...</href>
-				<juristdiction>LEA</juristdiction>
-				<objectType>xSre</objectType>
-			</target>
-			<target>
-				<href>...</href>
-				<juristdiction>LEA</juristdiction>
-				<objectType>Gradebook</objectType>
-			</target>
-			<target>
-				<href>...</href>
-				<juristdiction>LEA</juristdiction>
-			</target>
-			<target>
-				<href>...</href>
-				<juristdiction>LEA</juristdiction>
-			</target>
-		</otherTargets>
+
+		<!-- HATEOAS links -->
+		<link rel="xSre" juristdiction="SEA" href="https://link.to/xsre/1234" />
+		<link rel="xSre" juristdiction="LEA" href="https://link.to/xsre/1234" />
+		
+		<link rel="xSre" href="/requestProvider/xSres/a1b23-34bcfd;zoneId=seattle;contextId=TRANSFER?ncesId=1234567" />
+		- this is reliant on having a machine-readable registry of NCES locations
+
+		<link rel="iep" href="/requestProvider/ieps/a1b23-34bcfd;zoneId=seattle;contextId=SEA?ncesId=1234567" />
+		<link rel="iep" href="/requestProvider/ieps/a1b23-34bcfd;zoneId=seattle;contextId=LEA?ncesId=1234567" />
+			
+			- when I request this URL, the provider will then redirect my request to the appropriate provider for that NCES ID
+			- e.g., "NCES ID 1234567 is in Georgia. I have an agreement with Georgia. Georgia's xSre provider host is sifbroker.k12.ga.us."
+			- Provider then makes request to sifbroker.k12.ga.us, retrieves results, and sends back to original consumer.
+			
+			
+			
+			Broker config:
+			- the next highest provider is registered to PROVIDE xSre in the TRANSFER context.
+			
+			
+			
+			Conversation:
+			1. Me to Local Broker: Hey broker, do you have student 1234? (GET /...)
+			2. Local Broker to Me: Let me look.
+			3. Local Broker to National Broker: Who has student 1234?
+			4. National Broker: Georgia Broker has student 1234.
+			5. Local Broker to Georgia Broker: Please give me student 1234.
+			6. Georgia Broker to Local Broker: OK, here is student 1234.
+			7. Local Broker to Me: OK, here is student 1234.
+			
+		
+		<link rel="transferIEP" href="https://mylocalbrokerthaticanaccess.com/requestProvider/transferIEP/a1b23-34bcfd-112ca3;
+			zoneId=seattle.wa.us;contextId=TRANSFER;ncesId=1234567" />
+		
 		<localId>1029460298</localId>
 		<stateProvinceId>e22cece3-baca-4c88-8485-cef3b869b670</stateProvinceId>
 		<organizationIdType> <!-- returns the entity that provides the record -->

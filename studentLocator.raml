@@ -4,19 +4,21 @@ title: SIF Student Locator
 version: v3.3.0
 mediaType:  application/xml
 protocols: [HTTPS]
-baseUri: https://sif3service.dev/{version}/svcs/dev/requestProvider/studentLocator
+baseUri: https://sif3service.dev/{version}/svcs/dev/requestProvider/
 
 documentation:
   - title: Overview
     content: |
       The Student Locator service is used to find a specific student in a SIF 3.x system when the refId of the student object is unknown. The primary use case is for use within the SIF Student Record Exchange, where it is used to find a student so that the records of that student can be requested for transfer.
 
-/search:
+/studentLocatorSearch:
   displayName: Search for a single student
   description: |
-    This is a district request to a provider to return the targets and IDs for the students within the domain indicated by the identifying elements. The provider returns one Match marked `Valid`, or one or more Matches marked `Ambiguous`, or indicates an error.
+    This is a request to a provider to return the targets and IDs for the students within the domain indicated by the identifying elements. The provider returns one Match marked `Valid`, or one or more Matches marked `Ambiguous`, or indicates an error. The results include basic information about the matching student, as well as a set of links to other objects or relevant services. In this way, the Student Locator becomes a starting point for interacting with the student's data elsewhere in the SIF infrastructure.
     
-    *TODO:* Add standard SIF methods for providing `sortOrder`, `startRecord`, and `maximumRecordsReturned` (and other related parameters)
+    This action executes a standard SIF *Static Named XQuery*, which must be registered in the zone's Named XQuery Registry with the `xqueryToken` set to `studentLocatorSearch`. This named query template specifies the parameters that can be combined together to execute a potentially complex search for student records. The provider may use these parameters to conduct a probabilistic search with a complex algorithm that tweaks parameters or uses artificial intelligence to deliver the best possible search result. 
+    
+    All parameters in this search are optional, but consumers should provide as much information as possible to get the best result. 
     
   get:
     description: Submit a search query to the provider

@@ -50,7 +50,7 @@ dw.interval = 1.0
 dw.add_observer do |*args|
   args.each do |event|
     if File.join(directory, infile) == event.path && event.type.to_s == 'modified'
-      `raml2html -t resource-sif.nunjucks -i #{infile} -o #{outfile}`
+      `raml2html -t lib/template.nunjucks -i #{infile} -o #{outfile}`
       puts "#{Time.now.strftime("%I:%M:%S")} \
         Generated #{outfile} (since #{event.path} #{event.type})"
       reload_uri(outfile)

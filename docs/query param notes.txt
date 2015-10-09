@@ -1,0 +1,34 @@
+https://sif3service.dev/v3.3.0/svcs/dev/requestProvider/studentLocatorSearch
+	# ?where=[
+	# 	firstname=Matt
+	# 	AND lastname=Harris
+	# 	AND minimumMatchConfidence=0.8
+	# ]
+	
+	&order=[firstname ASC, lastname ASC]  		// standard SIF nav
+	&recordsPerPage=100  						// standard SIF nav
+	
+	&firstname=Matt
+	&lastname=Harris
+	&studentId=X
+	
+	
+	&[name matches XQuery Template parameter]
+	Supplies value to a parameter of the XQuery template whose token is in the last URL segment of the Query Request.
+	
+	&navigationPage=4
+	The number of the Page to be returned. If it is outside the range of results (which does not constitute an error) an HTTP Response with a code of 204 (No Content) will be returned.
+	
+	&navigationPageSize
+	This is included in every Paged Query Request, and indicates the number of Objects to be returned in the corresponding Response Page. If the Page Size specified is too large for the Service or Environments Provider to supply, an Error with code 413 (Response too large) will be returned.
+	
+	&order
+	Orders the result set by one or more specified elements and directions.
+	?order=[primarysortfield=direction;secondarysortfield=direction...]
+	
+	HEADERS
+	serviceType=XQUERYTEMPLATE
+	timestamp
+	authorization
+	
+	

@@ -76,17 +76,6 @@
 							</xs:documentation>
 						</xs:annotation>
 					</xs:element>
-					<xs:element name="target" type="xs:token" minOccurs="0">
-						<xs:annotation>
-							<xs:appinfo>
-								<elementName>Target</elementName>
-								<sifChar>O</sifChar>
-							</xs:appinfo>
-							<xs:documentation>
-								A token that defines the scope of the studentId. In most cases, this comes from directly from the StudentLocator service. This is an optional element for cases where only a single possible target for SRE providers exists. In most cases, this is a required element.
-							</xs:documentation>
-						</xs:annotation>
-					</xs:element>
 					<xs:element name="studentId" type="xs:token" minOccurs="1">
 						<xs:annotation>
 							<xs:appinfo>

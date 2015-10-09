@@ -21,6 +21,12 @@ documentation:
   description: Creating a new SRE Job begins the process of requesting a student's records, but does not immediately provide the records.
   post:
     description: Submit a new SRE job for processing.
+    queryParameters:
+      ncesId:
+        description: The NCES ID of the school, district, or state from which the record will be provided. The NCES ID is provided by the Student Locator service. If not provided, the SRE Job will only be created in the scope of local records.
+        type: integer
+        required: false
+        example: 123456
     body:
       application/xml:
         schema: !include schemas/sreJob.xsd
@@ -34,7 +40,7 @@ documentation:
   /{jobId}:
     displayName: Job Details
     get:
-      description: Get the details of a specific job, identified by {id}. TODO: MUST INCLUDE A xSRE TARGET, EVEN THOUGH THE STUDENT LOCATOR COULD PROVIDE OTHER TYPES.
+      description: Get the details of a specific job, identified by {jobId}.
       responses:
         200:
           body:

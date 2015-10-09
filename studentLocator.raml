@@ -197,6 +197,11 @@ documentation:
         example: "2016"
         minimum: 1950
         maximum: 2049
+      ncesId:
+        description: The NCES ID of the school, district or state where you believe the student record exists. This allows a search in other LEA's around the country. If this is omitted, the provider will likely only perform a local search.
+        type: integer
+        example: "123456"
+        required: false
       minimumMatchConfidence:
         description: |
           The minimum confidence level that should be used to return matching records, represented by a decimal between `0` and `1`. For example, supplying a value of `0.9` instructs the provider only to return results that have a 90% confident matching record, or a value of `1` ensures that *only* exact matches are returned.
@@ -204,6 +209,14 @@ documentation:
         maximum: 1
         minimum: 0
         example: "0.95"
+      searchPurpose:
+        description: A comma-separated list of resource types that you are interested in, which can be SIF object types (e.g., Student) or functional services (e.g., SRE Job). If provided, the search can be limited to providers that offer these resource types only.
+        example: "sreJob,transferIEP"
+        required: false
+      requesterEmailAddress:
+        description: A valid e-mail address at the organization making the request.
+        example: "real_person@k12.test.us"
+        required: true
       
     responses:
       200:

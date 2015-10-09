@@ -1,0 +1,56 @@
+
+Latest questions:
+- How do we audit the movement of records? Can we maintain a chain of custody?
+- How do we ensure no MITM tampering?
+
+<custodyChain>
+	...
+	Use this space to maintain the list of transitions of HATEOAS links as the results travel through the hub-and-spoke structure, and potentially digitally sign these so we can verify the chain.
+	
+	
+	- who received the request
+	- where did they receive it from
+	- what did they transform/modify
+	- where did they send it
+	- how do you confirm/verify that info
+	
+	<handler order="1">
+		<receiver>https://k12.test.us/requestProvider...</receiver>
+		<sender>x.x.x.x</sender>
+		<transforms>
+			<transform xpath="@/link[rel=xSre][href]" previousValue="x" newValue="y" />
+			<transform xpath="@/link[rel=sreJob][href]" previousValue="x" newValue="y" />
+			<transform xpath="@/link[rel=transferIep][href]" previousValue="x" newValue="y" />
+		</transforms>
+		<forwardAddress>https://k12.otherstate.us/requestProvider...</forwardAddress>
+		<signature>
+			23bel1iudpiubiubeiubdlbcelwivl4iublib
+		</signature>
+	</handler>
+	
+</custodyChain>
+
+HUB AND SPOKE (with unlimited nodes and message passthrough)
+-------------
+Pros:
+	- More flexible because the topology can adjust to political, administrative or technical shifts
+	- Necessary custody chain tracking provides better visibility to flow of data
+	- Fewer direct connections means less administrative burden
+	- Does not require a central system owner (fully distributed)
+
+Cons:
+	- Much more complex tech (e.g., custody chain tracking, etc.)
+
+
+DIRECT CONNECTIONS (with national registry and single hub)
+------------------
+Pros:
+	- Simpler tech because no chain of custody management
+	- Easier to understand the data flow and communicate how data is moving
+	- Individual agencies/organizations can decide to join or not
+
+Cons:
+	- Major administrative challenges because every school district needs to sign on
+	- Needs a central governing authority
+	- Potentially could be seen as national "database"
+

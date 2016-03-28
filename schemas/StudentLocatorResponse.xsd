@@ -1,0 +1,86 @@
+﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="../Entity/SIFglobal.xsd"/>
+  <xs:complexType name="studentLocatorSearchResults">
+    <xs:annotation>
+      <xs:appinfo>
+        <elementName>Student Locator Search Results Type</elementName>
+        <events>no</events>
+        <isSIFObject>no</isSIFObject>
+      </xs:appinfo>
+      <xs:documentation>
+        The results of a search for a student by demographic information are returned in order of confidence in the potential match.  If more than one match is found, all results are returned and each is marked as "ambigious."  If only one match is found and the provider finds no ambiguities in matches, the match is returned as ""confirmed."  These results are meant to be reviewed by a human who can select and use the proper matching record.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="studentLocatorSearchResult" minOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element type="xs:token" name="matchStatus"/>
+            <xs:element type="xs:float" name="matchConfidence"/>
+            <xs:element name="link" maxOccurs="unbounded" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element type="xs:token" name="rel"/>
+                  <xs:element type="xs:token" name="href"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element type="xs:int" name="localId"/>
+            <xs:element type="xs:token" name="stateProvinceId"/>
+            <xs:element name="organizationIdType">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element type="xs:token" name="type"/>
+                  <xs:element type="xs:short" name="value"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element type="xs:int" name="ncesId"/>
+            <xs:element name="otherStudentIdType">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element type="xs:token" name="type"/>
+                  <xs:element type="xs:int" name="value"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element type="xs:token" name="givenName">
+              <xs:annotation>
+                <xs:appinfo>
+                  <elementName>Given Name</elementName>
+                  <sifChar>O</sifChar>
+                  <cedsId></cedsId>
+                  <cedsURL></cedsURL>
+                </xs:appinfo>
+                <xs:documentation>
+                  The full legal first name given to a person at birth, baptism, or through legal change.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element type="xs:token" name="middleName">
+              <xs:annotation>
+                <xs:appinfo>
+                  <elementName>Middle Name</elementName>
+                  <sifChar>O</sifChar>
+                  <cedsId>000184</cedsId>
+                  <cedsURL>https://ceds.ed.gov/CEDSElementDetails.aspx?TermxTopicId=24786</cedsURL>
+                </xs:appinfo>
+                <xs:documentation>
+                  A full legal middle name given to a person at birth, baptism, or through legal change.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element type="xs:token" name="familyName"/>
+            <xs:element type="xs:token" name="suffix"/>
+            <xs:element type="xs:date" name="birthdate"/>
+            <xs:element type="xs:token" name="stateProvice"/>
+            <xs:element type="xs:byte" name="gradeLevel"/>
+            <xs:element type="xs:token" name="schoolYear"/>
+            <xs:element type="xs:short" name="projectedGraduationYear"/>
+            <xs:element type="xs:token" name="schoolOfEnrollment"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

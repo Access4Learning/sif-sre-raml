@@ -1,23 +1,26 @@
 #%RAML 0.8
 ---
 title: SIF Student Record Exchange
-version: v3.3.1
+version: v3.4.draft1
 mediaType:  application/xml
 protocols: [HTTPS]
 baseUri: https://sif3service.dev/{version}/svcs/dev/requestProvider
+
+securedBy: [sifHMAC]
+securitySchemes:
+    - sifHMAC: !include traits/sifHMAC.yaml
 
 documentation:
   - title: Overview
     content: |
       A Student Record Exchange (SRE) job tracks the status of moving a student's full student record from a SIF service provider. The process includes four basic phases:
-        1. Creating the job
+        1. Initializing the request
         2. Requesting permission to obtain the record
         3. Fetching the record
         4. Sending a receipt back to the responder
 
 /sreJobs:
-  displayName: |
-    Phase 1: Job Object
+  displayName: Create Job Object
   description: Creating a new SRE Job begins the process of requesting a student's records, but does not immediately provide the records.
   post:
     description: Submit a new SRE job for processing.
@@ -29,13 +32,13 @@ documentation:
         example: 123456
     body:
       application/xml:
-        schema: !include schemas/sreJob.xsd
+        schema: !include schemas/job.xsd
     responses:
       201:
         description: Successfully created the job.
         body:
           application/xml:
-            schema: !include schemas/sreJob.xsd
+            schema: !include schemas/job.xsd
     
   /{jobId}:
     displayName: Job Details
@@ -45,18 +48,54 @@ documentation:
         200:
           body:
             application/xml:
-              schema: !include schemas/sreJob.xsd
+              schema: !include schemas/job.xsd
   
     delete:
       description: Delete the job. This also deletes all child resources (permissionRequest, sre, receipt).
       responses:
-        200:
-          description: Job was successfully deleted. #TODO confirm that 200 is the proper status code to return for a delete operation.
-      
+        204:
+          description: Job was successfully deleted.
+
+/sreJobs/{jobId}/initialize:
+  displayName: |
+    Phase 1: Initialize the Request
+  description: |
+    The Job object above only stores the basic infrastructure information about the job in question. The immediate next step is for the client to submit data to the provider that initializes the request with the necessary information to process the job: requestor information, provider information, and student ID.
+
+  post:
+    description: Submit the initialization data for this job.
+    body:
+      application/xml:
+        schema: !include schemas/sreInitialization.xsd
+    responses:
+      201:
+        description: Successfully updated the initialization information for this job.
+        body:
+          application/xml:
+            schema: !include schemas/sreInitialization.xsd
+            
+  get:
+    description: Get the original initialization information for this job.
+    responses:
+      200:
+        description: Success
+        body:
+          application/xml:
+            schema: !include schemas/sreInitialization.xsd
+      404:
+        description: The initialization data has not yet been submitted and is not available.
+        
+
 /sreJobs/{jobId}/permissionRequests:
   displayName: |
     Phase 2: Permission Request
-  description: Before a requester can access the `sre` object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the `sre` object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
+  description: |
+    Before a requester can access the `sre` object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the `sre` object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
+    
+    Note that this endpoint does not support a `PUT` operation, which would normally be used to modify/update an existing resource. Permission requests cannot be modified by the consumer because they may already be in process out-of-band. Consumers wishing to modify a permission request should `POST` a new resource with an updated request for approval.
+    
+    SRE service providers should take care to keep the state of this phase in sync with the condition of the permissionRequest object(s) that exist for this job. For example, if a consumer submits a new permissionRequest, this phase should be reset to the `INPROGRESS` state and the `isActive` element of existing permissionRequest objects should be changed. After a request is approved or denied, this phase state should be updated to reflect the response: A `FAILED` permissionRequest phase means that permission was not approved by the provider, and a `COMPLETED` phase means that the request was approved. The provider may include extra information about why the request was approved or denied in the `providerComment` element of this permissionRequest record.
+  
   get:
     description: Retrieves the list of permission requests.
     queryParameters:
@@ -70,21 +109,27 @@ documentation:
         body:
           application/xml:
             schema: !include schemas/srePermissionRequest.xsd
+      404:
+        description: No permission requests have been submitted.
 
   post:
-    description: Issues a new permission request. (Delayed response)
+    description: Issues a new permission request. Consumers can specify the request type to be an immediate response or a delayed one as specified by SIF version 3.x. 
     headers:
       queueId:
         description: The queue ID that can accept the delayed response. TODO move to SIF `queueable` trait.
+        required: false
+      requestType:
+        description: IMMEDIATE or DELAYED
+        required: false
+        default: IMMEDIATE
     body:
       application/xml:
         schema: !include schemas/srePermissionRequest.xsd
     responses:
       202:
-        description: Delayed response accepted - TODO figure out how to specify text response
-
-      600:
-        description: The delayed response from the queue
+        description: Delayed response accepted. Monitor the queue specified by `queueId` for the response.
+      200:
+        description: The immediate response from the provider.
         body:
           application/xml:
             schema: !include schemas/srePermissionRequest.xsd
@@ -98,6 +143,8 @@ documentation:
           body:
             application/xml:
               schema: !include schemas/srePermissionRequest.xsd
+        404:
+          description: No matching permission request could be found.
     
 
 /sreJobs/{jobId}/xSre:
@@ -120,7 +167,9 @@ documentation:
         description: Returns the xSre object.
         body:
           application/xml:
-            schema: !include https://github.com/SIFAssociation/NADM/raw/master/Report/SIFNAxSRE.xsd
+            schema: !include https://github.com/Access4Learning/NADM/raw/master/Report/SIFNAxSRE.xsd
+      401:
+        description: Access denied - the requestToken provided is not valid.
 
 /sreJobs/{jobId}/receipt:
   displayName: |

@@ -11,11 +11,12 @@ Every time a change is noticed, information will be output to the terminal windo
 require 'rubygems'
 require 'directory_watcher'
 require 'URI'
+require 'colorize'
 
 directory = '.'
 infile = ARGV[0].to_s
 outfile = (ARGV[1] || infile.gsub(".raml", ".html")).to_s
-raise Exception.new("Usage: ./raml-autogen.rb infile.raml outfile.html") if infile == '' || outfile == ''
+abort("Usage: ./raml-autogen.rb infile.raml outfile.html\r\n".red) if infile == '' || outfile == ''
 
 def reload_uri(local_filename)
   filepath = File.realpath local_filename
@@ -44,22 +45,33 @@ def osascript(script)
   system 'osascript', *script.split(/\n/).map { |line| ['-e', line] }.flatten
 end
 
+def log(message)
+  prefix = "#{Time.now.strftime("%I:%M:%S")}  "
+  puts prefix + message
+end
 
 dw = DirectoryWatcher.new directory
 dw.interval = 1.0
 dw.add_observer do |*args|
   args.each do |event|
     if File.join(directory, infile) == event.path && event.type.to_s == 'modified'
-      `raml2html -t lib/template.nunjucks -i #{infile} -o #{outfile}`
-      puts "#{Time.now.strftime("%I:%M:%S")} \
-        Generated #{outfile} (since #{event.path} #{event.type})"
-      reload_uri(outfile)
+      result = `raml2html -t lib/template.nunjucks -i #{infile} -o #{outfile}`      
+      if result == ""
+        msg = "Generated #{outfile}"
+        log "#{msg} (since #{event.path} #{event.type})".green
+        reload_uri(outfile) if %x(./alerter -title "RAML Autogen" -message "#{msg}" -actions "Open") == "Open"
+      else
+        msg = "Tried to generate #{outfile} but got errors"
+        log "#{msg}:".red
+        puts result.red
+        %x(./alerter -title "RAML Autogen" -message "#{msg}")
+      end
     end
   end
 end
 
 dw.start
-puts "Watching '#{directory}' for changes. Will generate #{infile} => #{outfile}"
-puts "Press enter to quit."
+puts "Watching '#{directory}' for changes. Will generate #{infile} => #{outfile}".light_blue
+puts "Press enter to quit.".magenta
 STDIN.gets  # when the user hits "enter" the script will terminate
 dw.stop

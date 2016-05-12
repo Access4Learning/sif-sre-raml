@@ -89,6 +89,8 @@ documentation:
     Before a requester can access the `sre` object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the `sre` object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
     
     Note that this endpoint does not support a `PUT` operation, which would normally be used to modify/update an existing resource. Permission requests cannot be modified by the consumer because they may already be in process out-of-band. Consumers wishing to modify a permission request should `POST` a new resource with an updated request for approval.
+    
+    SRE service providers should take care to keep the state of this phase in sync with the condition of the permissionRequest object(s) that exist for this job. For example, if a consumer submits a new permissionRequest, this phase should be reset to the `INPROGRESS` state and the `isActive` element of existing permissionRequest objects should be changed. After a request is approved or denied, this phase state should be updated to reflect the response: A `FAILED` permissionRequest phase means that permission was not approved by the provider, and a `COMPLETED` phase means that the request was approved. The provider may include extra information about why the request was approved or denied in the `providerComment` element of this permissionRequest record.
   
   get:
     description: Retrieves the list of permission requests.

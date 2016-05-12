@@ -968,7 +968,7 @@
   &lt;/xs:complexType&gt;
   &lt;xs:element name="sreInitialization" type="sreInitializationType"/&gt;
 &lt;/xs:schema&gt;
-</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>The initialization data has not yet been submitted and is not available.</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="sreJobs__jobId__permissionRequests" class="panel-title">Phase 2: Permission Request</h3></div><div class="panel-body"><div class="top-resource-description"><p>Before a requester can access the <code>sre</code> object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the <code>sre</code> object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.</p><p>Note that this endpoint does not support a <code>PUT</code> operation, which would normally be used to modify/update an existing resource. Permission requests cannot be modified by the consumer because they may already be in process out-of-band. Consumers wishing to modify a permission request should <code>POST</code> a new resource with an updated request for approval.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_sreJobs__jobId__permissionRequests"><span class="parent"></span>/sreJobs/{jobId}/permissionRequests</a> <span class="methods"><a href="#sreJobs__jobId__permissionRequests_get"><span class="badge badge_get">get</span></a> <a href="#sreJobs__jobId__permissionRequests_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_sreJobs__jobId__permissionRequests" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#sreJobs__jobId__permissionRequests_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieves the list of permission requests.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#sreJobs__jobId__permissionRequests_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Issues a new permission request. Consumers can specify the request type to be an immediate response or a delayed one as specified by SIF version 3.x.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="sreJobs__jobId__permissionRequests_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/sreJobs/{jobId}/permissionRequests</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieves the list of permission requests.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#sreJobs__jobId__permissionRequests_get_request" data-toggle="tab">Request</a></li><li><a href="#sreJobs__jobId__permissionRequests_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="sreJobs__jobId__permissionRequests_get_request"><h3>URI Parameters</h3><dl><dt>jobId</dt><dd><em>required (string)</em></dd></dl><h3>Query Parameters</h3><dl class="dl-horizontal"><dt>isActive</dt><dd><em>(boolean)</em><p>Only return the request which is the primary, active permissionRequest. If left blank, all records are returned.</p></dd></dl></div><div class="tab-pane" id="sreJobs__jobId__permissionRequests_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Success</p><h3>Body</h3><p><strong>Type: application/xml</strong></p><p><strong>Schema</strong>:</p><pre><code>&lt;!-- version 3.03.02 --&gt;
+</code></pre><h2>HTTP status code <a href="http://httpstatus.es/404" target="_blank">404</a></h2><p>The initialization data has not yet been submitted and is not available.</p></div></div></div></div></div></div></div></div></div></div><div class="panel panel-default"><div class="panel-heading"><h3 id="sreJobs__jobId__permissionRequests" class="panel-title">Phase 2: Permission Request</h3></div><div class="panel-body"><div class="top-resource-description"><p>Before a requester can access the <code>sre</code> object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the <code>sre</code> object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.</p><p>Note that this endpoint does not support a <code>PUT</code> operation, which would normally be used to modify/update an existing resource. Permission requests cannot be modified by the consumer because they may already be in process out-of-band. Consumers wishing to modify a permission request should <code>POST</code> a new resource with an updated request for approval.</p><p>SRE service providers should take care to keep the state of this phase in sync with the condition of the permissionRequest object(s) that exist for this job. For example, if a consumer submits a new permissionRequest, this phase should be reset to the <code>INPROGRESS</code> state and the <code>isActive</code> element of existing permissionRequest objects should be changed. After a request is approved or denied, this phase state should be updated to reflect the response: A <code>FAILED</code> permissionRequest phase means that permission was not approved by the provider, and a <code>COMPLETED</code> phase means that the request was approved. The provider may include extra information about why the request was approved or denied in the <code>providerComment</code> element of this permissionRequest record.</p></div><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel_sreJobs__jobId__permissionRequests"><span class="parent"></span>/sreJobs/{jobId}/permissionRequests</a> <span class="methods"><a href="#sreJobs__jobId__permissionRequests_get"><span class="badge badge_get">get</span></a> <a href="#sreJobs__jobId__permissionRequests_post"><span class="badge badge_post">post</span></a></span></h4></div><div id="panel_sreJobs__jobId__permissionRequests" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#sreJobs__jobId__permissionRequests_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>Retrieves the list of permission requests.</p></div><div class="clearfix"></div></div><div onclick="window.location.href = '#sreJobs__jobId__permissionRequests_post'" class="list-group-item"><span class="badge badge_post">post</span><div class="method_description"><p>Issues a new permission request. Consumers can specify the request type to be an immediate response or a delayed one as specified by SIF version 3.x.</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="sreJobs__jobId__permissionRequests_get"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/sreJobs/{jobId}/permissionRequests</h4></div><div class="modal-body"><div class="alert alert-info"><p>Retrieves the list of permission requests.</p></div><ul class="nav nav-tabs"><li class="active"><a href="#sreJobs__jobId__permissionRequests_get_request" data-toggle="tab">Request</a></li><li><a href="#sreJobs__jobId__permissionRequests_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="sreJobs__jobId__permissionRequests_get_request"><h3>URI Parameters</h3><dl><dt>jobId</dt><dd><em>required (string)</em></dd></dl><h3>Query Parameters</h3><dl class="dl-horizontal"><dt>isActive</dt><dd><em>(boolean)</em><p>Only return the request which is the primary, active permissionRequest. If left blank, all records are returned.</p></dd></dl></div><div class="tab-pane" id="sreJobs__jobId__permissionRequests_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>Success</p><h3>Body</h3><p><strong>Type: application/xml</strong></p><p><strong>Schema</strong>:</p><pre><code>&lt;!-- version 3.03.02 --&gt;
 &lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"&gt;
   &lt;xs:include schemaLocation="../Entity/SIFglobal.xsd"/&gt;
   &lt;xs:complexType name="srePermissionRequestType"&gt;
@@ -979,27 +979,39 @@
         &lt;isSIFObject&gt;no&lt;/isSIFObject&gt;
       &lt;/xs:appinfo&gt;
       &lt;xs:documentation&gt;
-        Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
-        
-        TODO: Approval status for the permission request is reported in the Job object. A `FAILED` permissionRequest phase means that permission was not approved by the provider, and a `COMPLETED` phase means that the request was approved. The provider may include extra information about why the request was approved or denied in the `providerComment` element of this permissionRequest record.
+        Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these is likely to be issued as a SIF delayed request (although not required).
       &lt;/xs:documentation&gt;
     &lt;/xs:annotation&gt;
     &lt;xs:complexContent&gt;
       &lt;xs:extension base="gSIF_FunctionalServiceType"&gt;
         &lt;xs:sequence&gt;
-          
-          
-          &lt;isActive&gt;true&lt;/isActive&gt;
-          &lt;isApproved&gt;false&lt;/isApproved&gt;
-          
-          
+          &lt;xs:element name="isActive" type="xs:boolean" minOccurs="0"&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:appinfo&gt;
+                &lt;elementName&gt;Is Active&lt;/elementName&gt;
+                &lt;sifChar&gt;O&lt;/sifChar&gt;
+              &lt;/xs:appinfo&gt;
+              &lt;xs:documentation&gt;
+                Indicates whether this permission request is the currently active request. SRE Job API Providers should update this value automatically based on the current conditions of the SRE Job.
+              &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:element&gt;
+          &lt;xs:element name="isApproved" type="xs:boolean" minOccurs="0"&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:appinfo&gt;
+                &lt;elementName&gt;Is Approved&lt;/elementName&gt;
+                &lt;sifChar&gt;O&lt;/sifChar&gt;
+              &lt;/xs:appinfo&gt;
+              &lt;xs:documentation&gt;
+                Indicates whether this permission request has been approved by the provider school district. SRE Job API Providers should update this value automatically based on the current conditions of the SRE Job. If this value is not provided, then the request has not yet been approved or denied, and consumers should requery the object later to check for approval.
+              &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:element&gt;
           &lt;xs:element name="requesterComment" type="xs:string" minOccurs="0"&gt;
             &lt;xs:annotation&gt;
               &lt;xs:appinfo&gt;
                 &lt;elementName&gt;Requester Comment&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
                 Human readable content provided by the requestor that helps clarify the purpose or scope of the request.
@@ -1011,37 +1023,35 @@
               &lt;xs:appinfo&gt;
                 &lt;elementName&gt;Provider Comment&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
                 Human readable content that explains the decision or status of accepting or rejecting this request.
               &lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:element&gt;
-          &lt;xs:element name="xQuery" type="xs:string" minOccurs="0"&gt;
+          &lt;xs:element name="requestedData" minOccurs="0"&gt;
             &lt;xs:annotation&gt;
               &lt;xs:appinfo&gt;
-                &lt;elementName&gt;xQuery&lt;/elementName&gt;
+                &lt;elementName&gt;Requested Data&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
-                Standard xQuery token. “Everything you have” is default. TODO: Need to define token schema
-                
-                
-          &lt;requestedDataXPaths&gt;
-            &lt;xpath&gt;/name*&lt;/xpath&gt;
-            &lt;xpath&gt;/enrollments&lt;/xpath&gt;
-          &lt;/requestedDataXPaths&gt;
-            
-            
-                
-                
-                
+                A list of xPaths describing the parts of the student record being requested. “Everything you have” is default if this element is not provided. These xPaths will be combined by the provider when returning the SRE response.
               &lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="xpath" minOccurs="0" maxOccurs="unbounded"&gt;
+                &lt;xs:annotation&gt;
+                  &lt;xs:appinfo&gt;
+                    &lt;elementName&gt;xPath&lt;/elementName&gt;
+                    &lt;sifChar&gt;O&lt;/sifChar&gt;
+                  &lt;/xs:appinfo&gt;
+                  &lt;xs:documentation&gt;
+                    An xPath for a part of the student record object. For example, "/enrollments".
+                  &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:element&gt;
+            &lt;/xs:sequence&gt;
           &lt;/xs:element&gt;
         &lt;/xs:sequence&gt;
       &lt;/xs:extension&gt;
@@ -1060,27 +1070,39 @@
         &lt;isSIFObject&gt;no&lt;/isSIFObject&gt;
       &lt;/xs:appinfo&gt;
       &lt;xs:documentation&gt;
-        Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
-        
-        TODO: Approval status for the permission request is reported in the Job object. A `FAILED` permissionRequest phase means that permission was not approved by the provider, and a `COMPLETED` phase means that the request was approved. The provider may include extra information about why the request was approved or denied in the `providerComment` element of this permissionRequest record.
+        Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these is likely to be issued as a SIF delayed request (although not required).
       &lt;/xs:documentation&gt;
     &lt;/xs:annotation&gt;
     &lt;xs:complexContent&gt;
       &lt;xs:extension base="gSIF_FunctionalServiceType"&gt;
         &lt;xs:sequence&gt;
-          
-          
-          &lt;isActive&gt;true&lt;/isActive&gt;
-          &lt;isApproved&gt;false&lt;/isApproved&gt;
-          
-          
+          &lt;xs:element name="isActive" type="xs:boolean" minOccurs="0"&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:appinfo&gt;
+                &lt;elementName&gt;Is Active&lt;/elementName&gt;
+                &lt;sifChar&gt;O&lt;/sifChar&gt;
+              &lt;/xs:appinfo&gt;
+              &lt;xs:documentation&gt;
+                Indicates whether this permission request is the currently active request. SRE Job API Providers should update this value automatically based on the current conditions of the SRE Job.
+              &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:element&gt;
+          &lt;xs:element name="isApproved" type="xs:boolean" minOccurs="0"&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:appinfo&gt;
+                &lt;elementName&gt;Is Approved&lt;/elementName&gt;
+                &lt;sifChar&gt;O&lt;/sifChar&gt;
+              &lt;/xs:appinfo&gt;
+              &lt;xs:documentation&gt;
+                Indicates whether this permission request has been approved by the provider school district. SRE Job API Providers should update this value automatically based on the current conditions of the SRE Job. If this value is not provided, then the request has not yet been approved or denied, and consumers should requery the object later to check for approval.
+              &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:element&gt;
           &lt;xs:element name="requesterComment" type="xs:string" minOccurs="0"&gt;
             &lt;xs:annotation&gt;
               &lt;xs:appinfo&gt;
                 &lt;elementName&gt;Requester Comment&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
                 Human readable content provided by the requestor that helps clarify the purpose or scope of the request.
@@ -1092,37 +1114,35 @@
               &lt;xs:appinfo&gt;
                 &lt;elementName&gt;Provider Comment&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
                 Human readable content that explains the decision or status of accepting or rejecting this request.
               &lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:element&gt;
-          &lt;xs:element name="xQuery" type="xs:string" minOccurs="0"&gt;
+          &lt;xs:element name="requestedData" minOccurs="0"&gt;
             &lt;xs:annotation&gt;
               &lt;xs:appinfo&gt;
-                &lt;elementName&gt;xQuery&lt;/elementName&gt;
+                &lt;elementName&gt;Requested Data&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
-                Standard xQuery token. “Everything you have” is default. TODO: Need to define token schema
-                
-                
-          &lt;requestedDataXPaths&gt;
-            &lt;xpath&gt;/name*&lt;/xpath&gt;
-            &lt;xpath&gt;/enrollments&lt;/xpath&gt;
-          &lt;/requestedDataXPaths&gt;
-            
-            
-                
-                
-                
+                A list of xPaths describing the parts of the student record being requested. “Everything you have” is default if this element is not provided. These xPaths will be combined by the provider when returning the SRE response.
               &lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="xpath" minOccurs="0" maxOccurs="unbounded"&gt;
+                &lt;xs:annotation&gt;
+                  &lt;xs:appinfo&gt;
+                    &lt;elementName&gt;xPath&lt;/elementName&gt;
+                    &lt;sifChar&gt;O&lt;/sifChar&gt;
+                  &lt;/xs:appinfo&gt;
+                  &lt;xs:documentation&gt;
+                    An xPath for a part of the student record object. For example, "/enrollments".
+                  &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:element&gt;
+            &lt;/xs:sequence&gt;
           &lt;/xs:element&gt;
         &lt;/xs:sequence&gt;
       &lt;/xs:extension&gt;
@@ -1141,27 +1161,39 @@
         &lt;isSIFObject&gt;no&lt;/isSIFObject&gt;
       &lt;/xs:appinfo&gt;
       &lt;xs:documentation&gt;
-        Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
-        
-        TODO: Approval status for the permission request is reported in the Job object. A `FAILED` permissionRequest phase means that permission was not approved by the provider, and a `COMPLETED` phase means that the request was approved. The provider may include extra information about why the request was approved or denied in the `providerComment` element of this permissionRequest record.
+        Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these is likely to be issued as a SIF delayed request (although not required).
       &lt;/xs:documentation&gt;
     &lt;/xs:annotation&gt;
     &lt;xs:complexContent&gt;
       &lt;xs:extension base="gSIF_FunctionalServiceType"&gt;
         &lt;xs:sequence&gt;
-          
-          
-          &lt;isActive&gt;true&lt;/isActive&gt;
-          &lt;isApproved&gt;false&lt;/isApproved&gt;
-          
-          
+          &lt;xs:element name="isActive" type="xs:boolean" minOccurs="0"&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:appinfo&gt;
+                &lt;elementName&gt;Is Active&lt;/elementName&gt;
+                &lt;sifChar&gt;O&lt;/sifChar&gt;
+              &lt;/xs:appinfo&gt;
+              &lt;xs:documentation&gt;
+                Indicates whether this permission request is the currently active request. SRE Job API Providers should update this value automatically based on the current conditions of the SRE Job.
+              &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:element&gt;
+          &lt;xs:element name="isApproved" type="xs:boolean" minOccurs="0"&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:appinfo&gt;
+                &lt;elementName&gt;Is Approved&lt;/elementName&gt;
+                &lt;sifChar&gt;O&lt;/sifChar&gt;
+              &lt;/xs:appinfo&gt;
+              &lt;xs:documentation&gt;
+                Indicates whether this permission request has been approved by the provider school district. SRE Job API Providers should update this value automatically based on the current conditions of the SRE Job. If this value is not provided, then the request has not yet been approved or denied, and consumers should requery the object later to check for approval.
+              &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:element&gt;
           &lt;xs:element name="requesterComment" type="xs:string" minOccurs="0"&gt;
             &lt;xs:annotation&gt;
               &lt;xs:appinfo&gt;
                 &lt;elementName&gt;Requester Comment&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
                 Human readable content provided by the requestor that helps clarify the purpose or scope of the request.
@@ -1173,37 +1205,35 @@
               &lt;xs:appinfo&gt;
                 &lt;elementName&gt;Provider Comment&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
                 Human readable content that explains the decision or status of accepting or rejecting this request.
               &lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:element&gt;
-          &lt;xs:element name="xQuery" type="xs:string" minOccurs="0"&gt;
+          &lt;xs:element name="requestedData" minOccurs="0"&gt;
             &lt;xs:annotation&gt;
               &lt;xs:appinfo&gt;
-                &lt;elementName&gt;xQuery&lt;/elementName&gt;
+                &lt;elementName&gt;Requested Data&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
-                Standard xQuery token. “Everything you have” is default. TODO: Need to define token schema
-                
-                
-          &lt;requestedDataXPaths&gt;
-            &lt;xpath&gt;/name*&lt;/xpath&gt;
-            &lt;xpath&gt;/enrollments&lt;/xpath&gt;
-          &lt;/requestedDataXPaths&gt;
-            
-            
-                
-                
-                
+                A list of xPaths describing the parts of the student record being requested. “Everything you have” is default if this element is not provided. These xPaths will be combined by the provider when returning the SRE response.
               &lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="xpath" minOccurs="0" maxOccurs="unbounded"&gt;
+                &lt;xs:annotation&gt;
+                  &lt;xs:appinfo&gt;
+                    &lt;elementName&gt;xPath&lt;/elementName&gt;
+                    &lt;sifChar&gt;O&lt;/sifChar&gt;
+                  &lt;/xs:appinfo&gt;
+                  &lt;xs:documentation&gt;
+                    An xPath for a part of the student record object. For example, "/enrollments".
+                  &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:element&gt;
+            &lt;/xs:sequence&gt;
           &lt;/xs:element&gt;
         &lt;/xs:sequence&gt;
       &lt;/xs:extension&gt;
@@ -1222,27 +1252,39 @@
         &lt;isSIFObject&gt;no&lt;/isSIFObject&gt;
       &lt;/xs:appinfo&gt;
       &lt;xs:documentation&gt;
-        Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these are always issued as a SIF delayed request.
-        
-        TODO: Approval status for the permission request is reported in the Job object. A `FAILED` permissionRequest phase means that permission was not approved by the provider, and a `COMPLETED` phase means that the request was approved. The provider may include extra information about why the request was approved or denied in the `providerComment` element of this permissionRequest record.
+        Before a requester can access the sre object for a student, he must have obtained permission. This permission is tracked through this child resource called a "Permission Request", which contains details of the request, the status of the approval, and a token that is used to obtain the sre object in the next step. Because permission approvals will often require human intervention, these is likely to be issued as a SIF delayed request (although not required).
       &lt;/xs:documentation&gt;
     &lt;/xs:annotation&gt;
     &lt;xs:complexContent&gt;
       &lt;xs:extension base="gSIF_FunctionalServiceType"&gt;
         &lt;xs:sequence&gt;
-          
-          
-          &lt;isActive&gt;true&lt;/isActive&gt;
-          &lt;isApproved&gt;false&lt;/isApproved&gt;
-          
-          
+          &lt;xs:element name="isActive" type="xs:boolean" minOccurs="0"&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:appinfo&gt;
+                &lt;elementName&gt;Is Active&lt;/elementName&gt;
+                &lt;sifChar&gt;O&lt;/sifChar&gt;
+              &lt;/xs:appinfo&gt;
+              &lt;xs:documentation&gt;
+                Indicates whether this permission request is the currently active request. SRE Job API Providers should update this value automatically based on the current conditions of the SRE Job.
+              &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:element&gt;
+          &lt;xs:element name="isApproved" type="xs:boolean" minOccurs="0"&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:appinfo&gt;
+                &lt;elementName&gt;Is Approved&lt;/elementName&gt;
+                &lt;sifChar&gt;O&lt;/sifChar&gt;
+              &lt;/xs:appinfo&gt;
+              &lt;xs:documentation&gt;
+                Indicates whether this permission request has been approved by the provider school district. SRE Job API Providers should update this value automatically based on the current conditions of the SRE Job. If this value is not provided, then the request has not yet been approved or denied, and consumers should requery the object later to check for approval.
+              &lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:element&gt;
           &lt;xs:element name="requesterComment" type="xs:string" minOccurs="0"&gt;
             &lt;xs:annotation&gt;
               &lt;xs:appinfo&gt;
                 &lt;elementName&gt;Requester Comment&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
                 Human readable content provided by the requestor that helps clarify the purpose or scope of the request.
@@ -1254,37 +1296,35 @@
               &lt;xs:appinfo&gt;
                 &lt;elementName&gt;Provider Comment&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
                 Human readable content that explains the decision or status of accepting or rejecting this request.
               &lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:element&gt;
-          &lt;xs:element name="xQuery" type="xs:string" minOccurs="0"&gt;
+          &lt;xs:element name="requestedData" minOccurs="0"&gt;
             &lt;xs:annotation&gt;
               &lt;xs:appinfo&gt;
-                &lt;elementName&gt;xQuery&lt;/elementName&gt;
+                &lt;elementName&gt;Requested Data&lt;/elementName&gt;
                 &lt;sifChar&gt;O&lt;/sifChar&gt;
-                &lt;cedsId/&gt;
-                &lt;cedsURL/&gt;
               &lt;/xs:appinfo&gt;
               &lt;xs:documentation&gt;
-                Standard xQuery token. “Everything you have” is default. TODO: Need to define token schema
-                
-                
-          &lt;requestedDataXPaths&gt;
-            &lt;xpath&gt;/name*&lt;/xpath&gt;
-            &lt;xpath&gt;/enrollments&lt;/xpath&gt;
-          &lt;/requestedDataXPaths&gt;
-            
-            
-                
-                
-                
+                A list of xPaths describing the parts of the student record being requested. “Everything you have” is default if this element is not provided. These xPaths will be combined by the provider when returning the SRE response.
               &lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
+            &lt;xs:sequence&gt;
+              &lt;xs:element name="xpath" minOccurs="0" maxOccurs="unbounded"&gt;
+                &lt;xs:annotation&gt;
+                  &lt;xs:appinfo&gt;
+                    &lt;elementName&gt;xPath&lt;/elementName&gt;
+                    &lt;sifChar&gt;O&lt;/sifChar&gt;
+                  &lt;/xs:appinfo&gt;
+                  &lt;xs:documentation&gt;
+                    An xPath for a part of the student record object. For example, "/enrollments".
+                  &lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:element&gt;
+            &lt;/xs:sequence&gt;
           &lt;/xs:element&gt;
         &lt;/xs:sequence&gt;
       &lt;/xs:extension&gt;

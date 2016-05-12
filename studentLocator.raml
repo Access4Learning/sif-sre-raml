@@ -6,6 +6,13 @@ mediaType:  application/xml
 protocols: [HTTPS]
 baseUri: https://sif3service.dev/{version}/svcs/dev/requestProvider/
 
+securedBy: [sifHMAC]
+securitySchemes:
+    - sifHMAC: !include traits/sifHMAC.yaml
+
+traits:
+   - sifNavigatable: !include traits/sifNavigatable.yaml
+
 documentation:
   - title: Overview
     content: |
@@ -22,6 +29,7 @@ documentation:
     
   get:
     description: Submit a search query to the provider
+    is: [ sifNavigatable ]
     queryParameters:
       givenName:
         description: The full legal first name given to a person at birth, baptism, or through legal change.

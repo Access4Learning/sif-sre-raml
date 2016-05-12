@@ -6,6 +6,10 @@ mediaType:  application/xml
 protocols: [HTTPS]
 baseUri: https://sif3service.dev/{version}/svcs/dev/requestProvider
 
+securedBy: [sifHMAC]
+securitySchemes:
+    - sifHMAC: !include traits/sifHMAC.yaml
+
 documentation:
   - title: Overview
     content: |
